@@ -1,5 +1,194 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en-us"><generator uri="https://jekyllrb.com/" version="4.1.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" hreflang="en-us" /><updated>2020-10-16T18:03:55+08:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">IForester</title><subtitle>*&quot;Everybody has a forest of his own. Those lost have lost and those have met before* *&amp;nbsp;will meet each other again.&quot;* &amp;nbsp; &amp;nbsp; ***― Haruki Murakami, Norwegian Wood***
-</subtitle><author><name>Jerry Chung</name><email>lik_chung@163.com</email></author><entry><title type="html">再会，岛城</title><link href="http://localhost:4000/blog/diary/2020-10-04-farewell-tsingtao/" rel="alternate" type="text/html" title="再会，岛城" /><published>2020-10-04T00:00:00+08:00</published><updated>2020-10-15T22:21:40+08:00</updated><id>http://localhost:4000/blog/diary/farewell%20tsingtao</id><content type="html" xml:base="http://localhost:4000/blog/diary/2020-10-04-farewell-tsingtao/">&lt;h4 id=&quot;1&quot;&gt;&lt;center&gt;1&lt;/center&gt;&lt;/h4&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en-us"><generator uri="https://jekyllrb.com/" version="4.1.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" hreflang="en-us" /><updated>2020-10-17T01:36:32+08:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">IForester</title><subtitle>*&quot;Everybody has a forest of his own. Those lost have lost and those have met before* *&amp;nbsp;will meet each other again.&quot;* &amp;nbsp; &amp;nbsp; ***― Haruki Murakami, Norwegian Wood***
+</subtitle><author><name>Jerry Chung</name><email>lik_chung@163.com</email></author><entry><title type="html">A short CMD memo of Firewalld on RHEL8/CentOS8</title><link href="http://localhost:4000/blog/note/2020-10-15-CMD-of-Firewalld/" rel="alternate" type="text/html" title="A short CMD memo of Firewalld on RHEL8/CentOS8" /><published>2020-10-15T00:00:00+08:00</published><updated>2020-10-17T01:06:50+08:00</updated><id>http://localhost:4000/blog/note/CMD%20of%20Firewalld</id><content type="html" xml:base="http://localhost:4000/blog/note/2020-10-15-CMD-of-Firewalld/">&lt;p&gt;Please note &lt;strong&gt;root&lt;/strong&gt; or &lt;strong&gt;sudo&lt;/strong&gt; level privileges are required to conduct all commands below.&lt;/p&gt;
+
+&lt;h3 id=&quot;part-i-using-systemctl-to-simply-manage-firewalld&quot;&gt;PART I. Using systemctl to simply manage Firewalld&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;Lock Firewalld to suspend operation&lt;/p&gt;
+
+    &lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;# systemctl mask firewalld&lt;/code&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Unlock Firewalld&lt;/p&gt;
+
+    &lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;# systemctl unmask firewalld&lt;/code&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Start Firewalld&lt;/p&gt;
+
+    &lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;# systemctl start firewalld.service&lt;/code&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Stop Firewalld&lt;/p&gt;
+
+    &lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;# systemctl stop firewalld.service&lt;/code&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Reload Firewalld with possibility of restart service&lt;/p&gt;
+
+    &lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;# systemctl reload firewalld.service&lt;/code&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Restart Firewalld&lt;/p&gt;
+
+    &lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;# systemctl restart firewalld.service&lt;/code&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Display the status of Firewalld&lt;/p&gt;
+
+    &lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;# systemctl status firewalld.service&lt;/code&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Autorun Firewalld after boot&lt;/p&gt;
+
+    &lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;# systemctl enable firewalld.service&lt;/code&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Disable autorun of Firewalld&lt;/p&gt;
+
+    &lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;# systemctl disable firewalld.service&lt;/code&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Check the validity of Firewalld autorun&lt;/p&gt;
+
+    &lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;# systemctl is-enabled firewalld.service&lt;/code&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Check all services list&lt;/p&gt;
+
+    &lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;# systemctl list-unit-files&lt;/code&gt;&lt;/p&gt;
+
+    &lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;# systemctl list-unit-files | grep enabled&lt;/code&gt;    # add &lt;em&gt;grep&lt;/em&gt; to filtrate&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Check failed services&lt;/p&gt;
+
+    &lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;# systemctl --failed&lt;/code&gt;&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;part-ii-some-commends-from-firewalld-itself&quot;&gt;PART II. Some commends from Firewalld itself&lt;/h3&gt;
+
+&lt;h4 id=&quot;1-basic-command-lines&quot;&gt;1. Basic command lines&lt;/h4&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;Check Firewalld status&lt;/p&gt;
+
+    &lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;# firewall-cmd --state&lt;/code&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Update Firewalld rules without restart service&lt;/p&gt;
+
+    &lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;# firewall-cmd --reload&lt;/code&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Check all open ports&lt;/p&gt;
+
+    &lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;# firewall-cmd --list-ports&lt;/code&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Check allowed services&lt;/p&gt;
+
+    &lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;# firewall-cmd --list-services&lt;/code&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Acquire support services&lt;/p&gt;
+
+    &lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;# firewall-cmd --get-services&lt;/code&gt;&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;2-zone-settings&quot;&gt;2. Zone settings&lt;/h4&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;Check all zones&lt;/p&gt;
+
+    &lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;# firewall-cmd --list-all-zones&lt;/code&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Check active zone&lt;/p&gt;
+
+    &lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;# firewall-cmd --get-active-zones&lt;/code&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Set default public as default zone&lt;/p&gt;
+
+    &lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;# firewall-cmd --set-default-zone=public&lt;/code&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Check default zone&lt;/p&gt;
+
+    &lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;# firewall-cmd --get-default-zone&lt;/code&gt;&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;3-interface&quot;&gt;3. Interface&lt;/h4&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;Get the zone of interface eth0&lt;/p&gt;
+
+    &lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;# firewall-cmd --get-zone-of-interface=eth0&lt;/code&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Add interface eth0 into public zone&lt;/p&gt;
+
+    &lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;# firewall-cmd --zone=public --add-interface=eth0&lt;/code&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Delete interface eth0 from public zone&lt;/p&gt;
+
+    &lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;# firewall-cmd --zone=public --remove-interface=eth0&lt;/code&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Add interface eth0 into default zone&lt;/p&gt;
+
+    &lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;# firewall-cmd --zone=default --change-interface=eth0&lt;/code&gt;&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;4-port-configurations&quot;&gt;4. Port configurations&lt;/h4&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;Permanently open port 80 in global pattern&lt;/p&gt;
+
+    &lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;# firewall-cmd --add-port=80/tcp --permanent&lt;/code&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Permanently close port 80 in global pattern&lt;/p&gt;
+
+    &lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;# firewall-cmd --remove-port=80/tcp --permanent&lt;/code&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Permanently open port 65001 - 65010 in global pattern&lt;/p&gt;
+
+    &lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;# firewall-cmd --add-port=65001-65010/tcp --permanent&lt;/code&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Permanently open port 80 in public zone&lt;/p&gt;
+
+    &lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;# firewall-cmd  --zone=public --add-port=80/tcp --permanent&lt;/code&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Permanently close port 80 in public zonen&lt;/p&gt;
+
+    &lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;# firewall-cmd  --zone=public --remove-port=80/tcp --permanent&lt;/code&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Permanently open port 65001 - 65010 in public zone&lt;/p&gt;
+
+    &lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;# firewall-cmd  --zone=public --add-port=65001-65010/tcp --permanent&lt;/code&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Check if port 8080 opens&lt;/p&gt;
+
+    &lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;#firewall-cmd --query-port=8080/tcp&lt;/code&gt;&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;</content><author><name>Jerry Chung</name><email>lik_chung@163.com</email></author><category term="blog" /><category term="note" /><summary type="html">Please note root or sudo level privileges are required to conduct all commands below.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/img/blog/cmd%20of%20firewalld.jpg" /><media:content medium="image" url="http://localhost:4000/assets/img/blog/cmd%20of%20firewalld.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">再会，岛城</title><link href="http://localhost:4000/blog/diary/2020-10-04-farewell-tsingtao/" rel="alternate" type="text/html" title="再会，岛城" /><published>2020-10-04T00:00:00+08:00</published><updated>2020-10-15T22:21:40+08:00</updated><id>http://localhost:4000/blog/diary/farewell%20tsingtao</id><content type="html" xml:base="http://localhost:4000/blog/diary/2020-10-04-farewell-tsingtao/">&lt;h4 id=&quot;1&quot;&gt;&lt;center&gt;1&lt;/center&gt;&lt;/h4&gt;
 
 &lt;p&gt;凌晨四点四十，洗漱并收拾好行李，把剩下的半杯温水喝干，背上行囊，抽出房卡，掩上房门。&lt;/p&gt;
 
