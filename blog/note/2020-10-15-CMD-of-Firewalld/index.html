@@ -44,8 +44,8 @@ Powered by Hydejack v9.0.4 <https://hydejack.com/>
 <meta property="og:title" content="A short CMD memo of Firewalld on RHEL8/CentOS8" />
 <meta name="author" content="Jerry Chung" />
 <meta property="og:locale" content="en_us" />
-<meta name="description" content="Firewalld is an elemental protection for RHEL 8 or CentOS 8. Well setted Firewalld service should be primary before your OS accesses the Internet. This post is a summary of commands about Firewalld." />
-<meta property="og:description" content="Firewalld is an elemental protection for RHEL 8 or CentOS 8. Well setted Firewalld service should be primary before your OS accesses the Internet. This post is a summary of commands about Firewalld." />
+<meta name="description" content="Firewalld is elemental protection for RHEL 8 or CentOS 8. Well set Firewalld service should be primary before your OS accesses the Internet. This post is a summary of commands about Firewalld." />
+<meta property="og:description" content="Firewalld is elemental protection for RHEL 8 or CentOS 8. Well set Firewalld service should be primary before your OS accesses the Internet. This post is a summary of commands about Firewalld." />
 <link rel="canonical" href="http://localhost:4000/blog/note/2020-10-15-CMD-of-Firewalld/" />
 <meta property="og:url" content="http://localhost:4000/blog/note/2020-10-15-CMD-of-Firewalld/" />
 <meta property="og:site_name" content="IForester" />
@@ -56,7 +56,7 @@ Powered by Hydejack v9.0.4 <https://hydejack.com/>
 <meta property="twitter:image" content="http://localhost:4000/assets/img/blog/cmd%20of%20firewalld.jpg" />
 <meta property="twitter:title" content="A short CMD memo of Firewalld on RHEL8/CentOS8" />
 <script type="application/ld+json">
-{"description":"Firewalld is an elemental protection for RHEL 8 or CentOS 8. Well setted Firewalld service should be primary before your OS accesses the Internet. This post is a summary of commands about Firewalld.","image":"http://localhost:4000/assets/img/blog/cmd%20of%20firewalld.jpg","url":"http://localhost:4000/blog/note/2020-10-15-CMD-of-Firewalld/","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"http://localhost:4000/assets/img/logo.png"},"name":"Jerry Chung"},"@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/blog/note/2020-10-15-CMD-of-Firewalld/"},"author":{"@type":"Person","name":"Jerry Chung"},"headline":"A short CMD memo of Firewalld on RHEL8/CentOS8","dateModified":"2020-10-17T01:06:50+08:00","datePublished":"2020-10-15T00:00:00+08:00","@context":"https://schema.org"}</script>
+{"description":"Firewalld is elemental protection for RHEL 8 or CentOS 8. Well set Firewalld service should be primary before your OS accesses the Internet. This post is a summary of commands about Firewalld.","headline":"A short CMD memo of Firewalld on RHEL8/CentOS8","dateModified":"2020-10-17T18:56:06+08:00","datePublished":"2020-10-15T00:00:00+08:00","url":"http://localhost:4000/blog/note/2020-10-15-CMD-of-Firewalld/","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/blog/note/2020-10-15-CMD-of-Firewalld/"},"@type":"BlogPosting","image":"http://localhost:4000/assets/img/blog/cmd%20of%20firewalld.jpg","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"http://localhost:4000/assets/img/logo.png"},"name":"Jerry Chung"},"author":{"@type":"Person","name":"Jerry Chung"},"@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -310,7 +310,7 @@ in <span>Blog</span> / <a href="/note/" class="flip-title">Note</a>
 
   
     <p class="note-sm" >
-      Firewalld is an elemental protection for RHEL 8 or CentOS 8. Well setted Firewalld service should be primary before your OS accesses the Internet. This post is a summary of commands about Firewalld.
+      Firewalld is elemental protection for RHEL 8 or CentOS 8. Well set Firewalld service should be primary before your OS accesses the Internet. This post is a summary of commands about Firewalld.
 
     </p>
   
@@ -319,7 +319,7 @@ in <span>Blog</span> / <a href="/note/" class="flip-title">Note</a>
   </header>
 
   
-    <p>Please note <strong>root</strong> or <strong>sudo</strong> level privileges are required to conduct all commands below.</p>
+    <p>Please note that <strong>root</strong> or <strong>sudo</strong> level privileges are required to conduct all commands below.</p>
 
 <h3 id="part-i-using-systemctl-to-simply-manage-firewalld">PART I. Using systemctl to simply manage Firewalld</h3>
 
@@ -345,7 +345,7 @@ in <span>Blog</span> / <a href="/note/" class="flip-title">Note</a>
     <p><code class="language-plaintext highlighter-rouge"># systemctl stop firewalld.service</code></p>
   </li>
   <li>
-    <p>Reload Firewalld with possibility of restart service</p>
+    <p>Reload Firewalld with possibility of restarting service</p>
 
     <p><code class="language-plaintext highlighter-rouge"># systemctl reload firewalld.service</code></p>
   </li>
@@ -399,9 +399,11 @@ in <span>Blog</span> / <a href="/note/" class="flip-title">Note</a>
     <p><code class="language-plaintext highlighter-rouge"># firewall-cmd --state</code></p>
   </li>
   <li>
-    <p>Update Firewalld rules without restart service</p>
+    <p>Update Firewalld rules</p>
 
-    <p><code class="language-plaintext highlighter-rouge"># firewall-cmd --reload</code></p>
+    <p><code class="language-plaintext highlighter-rouge"># firewall-cmd --reload</code>  # dynamically reload without restarting</p>
+
+    <p><code class="language-plaintext highlighter-rouge"># firewall-cmd --complete-reload</code>  # with restarting</p>
   </li>
   <li>
     <p>Check all open ports</p>
@@ -417,6 +419,16 @@ in <span>Blog</span> / <a href="/note/" class="flip-title">Note</a>
     <p>Acquire support services</p>
 
     <p><code class="language-plaintext highlighter-rouge"># firewall-cmd --get-services</code></p>
+  </li>
+  <li>
+    <p>Reject all packages in urgency</p>
+
+    <p><code class="language-plaintext highlighter-rouge"># firewall-cmd --panic-on</code></p>
+  </li>
+  <li>
+    <p>Cancel packages rejection</p>
+
+    <p><code class="language-plaintext highlighter-rouge"># firewall-cmd --panic-off</code></p>
   </li>
 </ul>
 
@@ -454,7 +466,7 @@ in <span>Blog</span> / <a href="/note/" class="flip-title">Note</a>
     <p><code class="language-plaintext highlighter-rouge"># firewall-cmd --get-zone-of-interface=eth0</code></p>
   </li>
   <li>
-    <p>Add interface eth0 into public zone</p>
+    <p>Add interface eth0 to public zone</p>
 
     <p><code class="language-plaintext highlighter-rouge"># firewall-cmd --zone=public --add-interface=eth0</code></p>
   </li>
@@ -464,7 +476,7 @@ in <span>Blog</span> / <a href="/note/" class="flip-title">Note</a>
     <p><code class="language-plaintext highlighter-rouge"># firewall-cmd --zone=public --remove-interface=eth0</code></p>
   </li>
   <li>
-    <p>Add interface eth0 into default zone</p>
+    <p>Add interface eth0 to default zone</p>
 
     <p><code class="language-plaintext highlighter-rouge"># firewall-cmd --zone=default --change-interface=eth0</code></p>
   </li>
@@ -556,9 +568,7 @@ in <span>Blog</span> / <a href="/note/" class="flip-title">Note</a>
     About
   </h2>
 
-  <p><em>“Everybody has a forest of his own. Those lost have lost and those have met before</em></p>
-
-<p><em> will meet each other again.”</em>     <strong><em>― Haruki Murakami, Norwegian Wood</em></strong></p>
+  <p><em>“Everybody has a forest of his own. Those lost have lost and those have met before will meet each other again.”</em>     <strong><em>― Haruki Murakami, Norwegian Wood</em></strong></p>
 
 
   <div class="sidebar-social">
