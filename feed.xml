@@ -1,5 +1,217 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en-us"><generator uri="https://jekyllrb.com/" version="4.1.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" hreflang="en-us" /><updated>2020-10-17T18:57:32+08:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">IForester</title><subtitle>*&quot;Everybody has a forest of his own. Those lost have lost and those have met before* *&amp;nbsp;will meet each other again.&quot;* &amp;nbsp; &amp;nbsp; ***― Haruki Murakami, Norwegian Wood***
-</subtitle><author><name>Jerry Chung</name><email>lik_chung@163.com</email></author><entry><title type="html">A short CMD memo of Firewalld on RHEL8/CentOS8</title><link href="http://localhost:4000/blog/note/2020-10-15-CMD-of-Firewalld/" rel="alternate" type="text/html" title="A short CMD memo of Firewalld on RHEL8/CentOS8" /><published>2020-10-15T00:00:00+08:00</published><updated>2020-10-17T18:56:06+08:00</updated><id>http://localhost:4000/blog/note/CMD%20of%20Firewalld</id><content type="html" xml:base="http://localhost:4000/blog/note/2020-10-15-CMD-of-Firewalld/">&lt;p&gt;Please note that &lt;strong&gt;root&lt;/strong&gt; or &lt;strong&gt;sudo&lt;/strong&gt; level privileges are required to conduct all commands below.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en-us"><generator uri="https://jekyllrb.com/" version="4.1.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" hreflang="en-us" /><updated>2020-10-18T13:45:09+08:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">IForester</title><subtitle>*&quot;Everybody has a forest of his own. Those lost have lost and those have met before* *&amp;nbsp;will meet each other again.&quot;* &amp;nbsp; &amp;nbsp; ***― Haruki Murakami, Norwegian Wood***
+</subtitle><author><name>Jerry Chung</name><email>lik_chung@163.com</email></author><entry><title type="html">The common usages of SSH login</title><link href="http://localhost:4000/blog/note/2020-10-17-ssh-login/" rel="alternate" type="text/html" title="The common usages of SSH login" /><published>2020-10-17T00:00:00+08:00</published><updated>2020-10-18T13:41:43+08:00</updated><id>http://localhost:4000/blog/note/ssh%20login</id><content type="html" xml:base="http://localhost:4000/blog/note/2020-10-17-ssh-login/">&lt;p&gt;There are roughly three ways to use SSH to log in to a remote Linux server: &lt;strong&gt;password&lt;/strong&gt;, &lt;strong&gt;key&lt;/strong&gt;, and &lt;strong&gt;certificate&lt;/strong&gt;. This post will focus on how to use these three methods of SSH login to remote Linux and will not go through the SSH principles or the underlying protocols. Furthermore, this article only discusses Linux and macOS-based SSH usage. If you want to use ssh in windows, you need third-party software support.&lt;/p&gt;
+
+&lt;h3 id=&quot;1-password&quot;&gt;1. Password&lt;/h3&gt;
+
+&lt;p&gt;Assuming you want to log in to the remote host with a user name, you can reach it with a simple command.&lt;/p&gt;
+
+&lt;p&gt;  &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;$ ssh user@host&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;The default port for SSH is 22. if you are using another port, &lt;em&gt;e.g.&lt;/em&gt; 233, add the parameter &lt;em&gt;p&lt;/em&gt;.&lt;/p&gt;
+
+&lt;p&gt;  &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;$ ssh user@host -p 233&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;The first connection will prompt that the host’s authenticity cannot be confirmed. Only public key fingerprint is known, whether to continue the connection or not.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;The authenticity of host can’t be established.&lt;/p&gt;
+
+  &lt;p&gt;RSA key fingerprint is xxxxxx # 128-bit fingerprint MD5 value.&lt;/p&gt;
+
+  &lt;p&gt;Are you sure you want to continue connecting (yes/no)?&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;The remote host must publicize the public key fingerprints through a website or other method, and the user can compare them on their own to decide whether to connect.&lt;/p&gt;
+
+&lt;p&gt;When the remote host’s public key is accepted, it is saved in &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;$HOME/.ssh/known_hosts&lt;/code&gt; without warning the next time. If it is saved in &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;/etc/ssh/ssh_known_hosts&lt;/code&gt;, it takes effect for all local users.&lt;/p&gt;
+
+&lt;h3 id=&quot;2-key&quot;&gt;2. Key&lt;/h3&gt;
+
+&lt;p&gt;The principle of key login is that the user stores his public key on the remote host. When logging in, the remote host sends a random string to the user, who encrypts it with his or her private key and sends it back. The remote host decrypts it with the pre-stored public key, and if successful, it proves that the user is trustworthy and directly allows the login, no longer requiring a password.&lt;/p&gt;
+
+&lt;p&gt;To log in with key, you first need to check the file &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;/etc/ssh/sshd_config&lt;/code&gt;, paying attention to following parameters.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;RSAAuthentication yes&lt;/p&gt;
+
+  &lt;p&gt;PubkeyAuthentication yes&lt;/p&gt;
+
+  &lt;p&gt;AuthorizedKeysFile .ssh/authorized_keys&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Check the permissions of &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;$HOME&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;$HOME/.ssh/&lt;/code&gt; and &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;authorized_keys&lt;/code&gt; on the remote server; otherwise the key login will be denied.&lt;/p&gt;
+
+&lt;p&gt;  &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;# chown user:group $HOME/.ssh/&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;  &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;$ chmod 700 $HOME/.ssh/&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;  &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;$ chmod 600 $HOME/.ssh/authorized_keys&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Now you can generate your own public key o n local machine.&lt;/p&gt;
+
+&lt;p&gt;  &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;$ ssh-keygen&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;When generating, it will ask if the private key needs passphrase. When it is finished, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;id_rsa&lt;/code&gt; and &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;id_rsa.pub&lt;/code&gt; are generated in the folder &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;$HOME/.ssh/&lt;/code&gt;, the former for the private key and the latter for the public key.&lt;/p&gt;
+
+&lt;p&gt;Transfer the &lt;strong&gt;public key&lt;/strong&gt; to a remote server. Parameter &lt;em&gt;p&lt;/em&gt; may be necessary：&lt;/p&gt;
+
+&lt;p&gt;  &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;$ ssh-copy-id user@host -p 233&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;or&lt;/p&gt;
+
+&lt;p&gt;  &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;$ scp -p 233 $HOME/.ssh/id_rsa.pub user@host:$HOME/.ssh/id_rsa.pub&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Append the &lt;strong&gt;public key&lt;/strong&gt; to the remote server authentication file:&lt;/p&gt;
+
+&lt;p&gt;  &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;$ cat /home/id_rsa.pub &amp;gt;&amp;gt; ~/.ssh/authorized_keys&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Don’t forget to reload &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;sshd.service&lt;/code&gt; to make it works.&lt;/p&gt;
+
+&lt;p&gt;  &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;# systemctl restart sshd.service&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;To make logging in easier, you can configure a quick login in local file &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;$HOME/.ssh/config&lt;/code&gt;.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Host            # alias&lt;/p&gt;
+
+  &lt;p&gt;HostName        # ip or domain of remote server&lt;/p&gt;
+
+  &lt;p&gt;Port            # ssh port&lt;/p&gt;
+
+  &lt;p&gt;User            # user name&lt;/p&gt;
+
+  &lt;p&gt;IdentityFile    # $HOME/.ssh/id_rsa&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Then, you can log in using the alias in the configuration file.&lt;/p&gt;
+
+&lt;p&gt;  &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;$ ssh host-alias&lt;/code&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;3-certificate&quot;&gt;3. Certificate&lt;/h3&gt;
+
+&lt;p&gt;With certificate login, user and server don’t need to know each other’s public key in advance, they only need to exchange their respective certificates to verify whether the certificate is trustworthy. And the certificate can set the validity period.&lt;/p&gt;
+
+&lt;p&gt;The &lt;strong&gt;Certificate1 Authority (CA)&lt;/strong&gt; issues &lt;strong&gt;server certificates&lt;/strong&gt; for trusted servers and &lt;strong&gt;user certificates&lt;/strong&gt; for trusted users.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;YOU NEED A CA SERVER&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;h4 id=&quot;step-1&quot;&gt;STEP 1&lt;/h4&gt;
+
+&lt;p&gt;Generate a key for the CA to issue a user certificate. This will generates a pair of keys in &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;$HOME/.ssh&lt;/code&gt;: &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;user_ca&lt;/code&gt; and &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;user_ca.pub&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;  &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;$ ssh-keygen -t rsa -b 4096 -f $HOME/.ssh/user_ca -C user_ca&lt;/code&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;-t rsa: RSA algorithm&lt;/li&gt;
+  &lt;li&gt;-b 4096: key is 4096 bits&lt;/li&gt;
+  &lt;li&gt;-f $HOME/.ssh/user_ca: location and file name of the key&lt;/li&gt;
+  &lt;li&gt;-C user_ca: a note string of the key&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Generate a key for the CA to issue a server certificate. This will generates a pair of keys in &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;$HOME/.ssh&lt;/code&gt;: &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;host_ca&lt;/code&gt; and &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;host_ca.pub&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;  &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;$ ssh-keygen -t rsa -b 4096 -f $HOME/.ssh/host_ca -C host_ca&lt;/code&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;step-2&quot;&gt;STEP 2&lt;/h4&gt;
+
+&lt;p&gt;CA issues server certificate&lt;/p&gt;
+
+&lt;p&gt;  &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;# ssh-keygen -f /etc/ssh/ssh_host_rsa_key -b 4096 -t rsa&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;The above command generates private key &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ssh_host_rsa_key&lt;/code&gt; and public key &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ssh_host_rsa_key.pub&lt;/code&gt; in &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;/etc/ssh&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;CA then uses the key &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;host_ca&lt;/code&gt; to issue the server certificate &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ssh_host_rsa_key-cert.pub&lt;/code&gt; for the public key &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ssh_host_rsa_key.pub&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;  &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;$ ssh-keygen -s host_ca -I host.example.com -h -n host.example.com -V +52w ssh_host_rsa_key.pub&lt;/code&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;-s: the key&lt;/li&gt;
+  &lt;li&gt;-I: identity string as note&lt;/li&gt;
+  &lt;li&gt;-h: specify the certificate is a server certificate, not a user certificate&lt;/li&gt;
+  &lt;li&gt;-n host.example.com: the domain name of the server&lt;/li&gt;
+  &lt;li&gt;-V +52w: the validity of the certificate, here it is 52 weeks (one year)&lt;/li&gt;
+  &lt;li&gt;ssh_host_rsa_key.pub: server public key.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Finally, check the permission&lt;/p&gt;
+
+&lt;p&gt;  &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;$ chmod 600 ssh_host_rsa_key-cert.pub&lt;/code&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;step-3&quot;&gt;STEP 3&lt;/h4&gt;
+
+&lt;p&gt;In local machine:&lt;/p&gt;
+
+&lt;p&gt;  &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;$ ssh-keygen -f /.ssh/user_key -b 4096 -t rsa&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;The above command generates private key &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;user_key&lt;/code&gt; and public key &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;user_key.pub&lt;/code&gt; in &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;$HOME/.ssh&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;Upload public key &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;user_key.pub&lt;/code&gt; to CA, then CA uses the key &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;user_ca&lt;/code&gt; to issue the server certificate &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;user_key-cert.pub&lt;/code&gt; for the public key &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;user_key.pub&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;  &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;$ ssh-keygen -s user_ca -I user@example.com -n user -V +1d user_key.pub&lt;/code&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;-s: the key&lt;/li&gt;
+  &lt;li&gt;-I: identity string as note&lt;/li&gt;
+  &lt;li&gt;-n user: user name&lt;/li&gt;
+  &lt;li&gt;-V +1d: the validity period of the certificate, here is 1 day, to force users to apply for the certificate once a day to improve security. By default, the certificate is valid forever.&lt;/li&gt;
+  &lt;li&gt;user_key.pub: the user’s public key.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Finally, check the permission&lt;/p&gt;
+
+&lt;p&gt;  &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;$ chmod 600 user_key-cert.pub&lt;/code&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;step-4&quot;&gt;STEP 4&lt;/h4&gt;
+
+&lt;p&gt;Send server certificate to remote host:&lt;/p&gt;
+
+&lt;p&gt;  &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;$ scp $HOME/.ssh/ssh_host_rsa_key-cert.pub root@host.example.com:/etc/ssh/&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Modify &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;/etc/ssh/sshd_config&lt;/code&gt;:&lt;/p&gt;
+
+&lt;p&gt;  &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;HostCertificate /etc/ssh/ssh_host_rsa_key-cert.pub&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Reload sshd service:&lt;/p&gt;
+
+&lt;p&gt;  &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;# systemctl restart sshd&lt;/code&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;step-5&quot;&gt;STEP 5&lt;/h4&gt;
+
+&lt;p&gt;Sent user public key to remote host:&lt;/p&gt;
+
+&lt;p&gt;  &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;$ scp $HOME/.ssh/user_ca.pub root@host.example.com:/etc/ssh&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Modify &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;/etc/ssh/sshd_config&lt;/code&gt;:&lt;/p&gt;
+
+&lt;p&gt;  &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;TrustedUserCAKeys /etc/ssh/user_ca.pub&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Reload sshd service:&lt;/p&gt;
+
+&lt;p&gt;  &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;# systemctl restart sshd&lt;/code&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;step-6&quot;&gt;STEP 6&lt;/h4&gt;
+
+&lt;p&gt;Send &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;user_key-cert.pub&lt;/code&gt; from CA to local machine and keep it with &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;user_key&lt;/code&gt; in the same folder.&lt;/p&gt;
+
+&lt;h4 id=&quot;step-7&quot;&gt;STEP 7&lt;/h4&gt;
+
+&lt;p&gt;Install CA public key to local machine. Modify the file &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;$HOME/.ssh.ssh_known_hosts&lt;/code&gt; to apoend the content of &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;host_ca.pub&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;Now you can login remote server with certificate.&lt;/p&gt;
+
+&lt;p&gt;  &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;$ ssh -i $HOME/.ssh/user_key user@host.example.com&lt;/code&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;ps-how-to-revoke-certificate&quot;&gt;P.S. How to revoke certificate&lt;/h4&gt;
+
+&lt;p&gt;To revoke server certificate, delete the conetent of &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;@cert-authority&lt;/code&gt; in the file &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;known_hosts&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;To revoke user certificate, create a file &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;/etc/ssh/revoked_keys&lt;/code&gt; in remote server and modify &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;sshd_config&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;  &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;RevokedKeys /etc/ssh/revoked_keys&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;The &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;revoked_keys&lt;/code&gt; store user certificate that are no longer trusted.&lt;/p&gt;
+
+&lt;p&gt;  &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;$ ssh-keygen -kf /etc/ssh/revoked_keys -z 1 $HOME/.ssh/user_key.pub&lt;/code&gt;&lt;/p&gt;</content><author><name>Jerry Chung</name><email>lik_chung@163.com</email></author><category term="blog" /><category term="note" /><summary type="html">There are roughly three ways to use SSH to log in to a remote Linux server: password, key, and certificate. This post will focus on how to use these three methods of SSH login to remote Linux and will not go through the SSH principles or the underlying protocols. Furthermore, this article only discusses Linux and macOS-based SSH usage. If you want to use ssh in windows, you need third-party software support.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/img/blog/ssh%20login.jpg" /><media:content medium="image" url="http://localhost:4000/assets/img/blog/ssh%20login.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">A short CMD memo of Firewalld on RHEL8/CentOS8</title><link href="http://localhost:4000/blog/note/2020-10-15-cmd-of-firewalld/" rel="alternate" type="text/html" title="A short CMD memo of Firewalld on RHEL8/CentOS8" /><published>2020-10-15T00:00:00+08:00</published><updated>2020-10-17T23:37:06+08:00</updated><id>http://localhost:4000/blog/note/cmd%20of%20firewalld</id><content type="html" xml:base="http://localhost:4000/blog/note/2020-10-15-cmd-of-firewalld/">&lt;p&gt;Please note that &lt;strong&gt;root&lt;/strong&gt; or &lt;strong&gt;sudo&lt;/strong&gt; level privileges are required to conduct all commands below.&lt;/p&gt;
 
 &lt;h3 id=&quot;part-i-using-systemctl-to-simply-manage-firewalld&quot;&gt;PART I. Using systemctl to simply manage Firewalld&lt;/h3&gt;
 
@@ -198,9 +410,9 @@
   &lt;li&gt;
     &lt;p&gt;Check if port 8080 opens&lt;/p&gt;
 
-    &lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;#firewall-cmd --query-port=8080/tcp&lt;/code&gt;&lt;/p&gt;
+    &lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;# firewall-cmd --query-port=8080/tcp&lt;/code&gt;&lt;/p&gt;
   &lt;/li&gt;
-&lt;/ul&gt;</content><author><name>Jerry Chung</name><email>lik_chung@163.com</email></author><category term="blog" /><category term="note" /><summary type="html">Please note that root or sudo level privileges are required to conduct all commands below.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/img/blog/cmd%20of%20firewalld.jpg" /><media:content medium="image" url="http://localhost:4000/assets/img/blog/cmd%20of%20firewalld.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">再会，岛城</title><link href="http://localhost:4000/blog/diary/2020-10-04-farewell-tsingtao/" rel="alternate" type="text/html" title="再会，岛城" /><published>2020-10-04T00:00:00+08:00</published><updated>2020-10-15T22:21:40+08:00</updated><id>http://localhost:4000/blog/diary/farewell%20tsingtao</id><content type="html" xml:base="http://localhost:4000/blog/diary/2020-10-04-farewell-tsingtao/">&lt;h4 id=&quot;1&quot;&gt;&lt;center&gt;1&lt;/center&gt;&lt;/h4&gt;
+&lt;/ul&gt;</content><author><name>Jerry Chung</name><email>lik_chung@163.com</email></author><category term="blog" /><category term="note" /><summary type="html">Please note that root or sudo level privileges are required to conduct all commands below.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/img/blog/cmd%20of%20firewalld.jpg" /><media:content medium="image" url="http://localhost:4000/assets/img/blog/cmd%20of%20firewalld.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">再会，岛城</title><link href="http://localhost:4000/blog/diary/2020-10-04-farewell-tsingtao/" rel="alternate" type="text/html" title="再会，岛城" /><published>2020-10-04T00:00:00+08:00</published><updated>2020-10-17T23:37:01+08:00</updated><id>http://localhost:4000/blog/diary/farewell%20tsingtao</id><content type="html" xml:base="http://localhost:4000/blog/diary/2020-10-04-farewell-tsingtao/">&lt;h4 id=&quot;1&quot;&gt;&lt;center&gt;1&lt;/center&gt;&lt;/h4&gt;
 
 &lt;p&gt;凌晨四点四十，洗漱并收拾好行李，把剩下的半杯温水喝干，背上行囊，抽出房卡，掩上房门。&lt;/p&gt;
 
@@ -248,7 +460,7 @@
 
 &lt;h4 id=&quot;4&quot;&gt;&lt;center&gt;4&lt;/center&gt;&lt;/h4&gt;
 
-&lt;p&gt;流亭机场，赶早班飞机的乘客比想象中多。熙来人往的大厅里，有人结伴而行，有人独自动身，有人神色匆忙，有人泰然自处，更多人面无表情，世界本来就有无尽的不同姿态。我身边没有陪同者，我拥有的只有一个背包，但不意味着我始终孤单。我拥有过美好的回忆，亦拥有此刻挂念的人，也许他们也同样在某一刻想念着我。想到如此，我低头对挪不动的双腿默默说，走吧，走吧。&lt;/p&gt;</content><author><name>Jerry Chung</name><email>lik_chung@163.com</email></author><category term="blog" /><category term="diary" /><summary type="html">1</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/img/blog/farewell%20tsingtao.jpg" /><media:content medium="image" url="http://localhost:4000/assets/img/blog/farewell%20tsingtao.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Welcome to IForester</title><link href="http://localhost:4000/blog/note/2020-10-01-welcome-to-iforester/" rel="alternate" type="text/html" title="Welcome to IForester" /><published>2020-10-01T00:00:00+08:00</published><updated>2020-10-16T16:36:02+08:00</updated><id>http://localhost:4000/blog/note/welcome%20to%20iforester</id><content type="html" xml:base="http://localhost:4000/blog/note/2020-10-01-welcome-to-iforester/">&lt;p&gt;&lt;strong&gt;&lt;a href=&quot;https://iforester.me/&quot;&gt;IForester&lt;/a&gt;&lt;/strong&gt; is a personal blog built by Jerry Chung on Oct 1, 2020.&lt;/p&gt;
+&lt;p&gt;流亭机场，赶早班飞机的乘客比想象中多。熙来人往的大厅里，有人结伴而行，有人独自动身，有人神色匆忙，有人泰然自处，更多人面无表情，世界本来就有无尽的不同姿态。我身边没有陪同者，我拥有的仅仅一个相伴三年的背包，但不意味着我始终孤单。我曾有过美好的回忆，此刻亦拥有挂念之人，也许他们同样也在某一刻思念着我。想到如此，不禁如释重负，我低头对挪不动的双腿默默说，走吧，走吧。&lt;/p&gt;</content><author><name>Jerry Chung</name><email>lik_chung@163.com</email></author><category term="blog" /><category term="diary" /><summary type="html">1</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/img/blog/farewell%20tsingtao.jpg" /><media:content medium="image" url="http://localhost:4000/assets/img/blog/farewell%20tsingtao.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Welcome to IForester</title><link href="http://localhost:4000/blog/note/2020-10-01-welcome-to-iforester/" rel="alternate" type="text/html" title="Welcome to IForester" /><published>2020-10-01T00:00:00+08:00</published><updated>2020-10-17T20:09:49+08:00</updated><id>http://localhost:4000/blog/note/welcome%20to%20iforester</id><content type="html" xml:base="http://localhost:4000/blog/note/2020-10-01-welcome-to-iforester/">&lt;p&gt;&lt;strong&gt;&lt;a href=&quot;https://iforester.me/&quot;&gt;IForester&lt;/a&gt;&lt;/strong&gt; is a personal blog built by Jerry Chung on Oct 1, 2020.&lt;/p&gt;
 
 &lt;p&gt;This site aims to keeping a diary and taking notes in the long term.&lt;/p&gt;
 

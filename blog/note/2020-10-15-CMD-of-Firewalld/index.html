@@ -34,6 +34,8 @@ Powered by Hydejack v9.0.4 <https://hydejack.com/>
 
 
 
+  <meta name="robots" content="noindex">
+
 
 
   
@@ -46,8 +48,8 @@ Powered by Hydejack v9.0.4 <https://hydejack.com/>
 <meta property="og:locale" content="en_us" />
 <meta name="description" content="Firewalld is elemental protection for RHEL 8 or CentOS 8. Well set Firewalld service should be primary before your OS accesses the Internet. This post is a summary of commands about Firewalld." />
 <meta property="og:description" content="Firewalld is elemental protection for RHEL 8 or CentOS 8. Well set Firewalld service should be primary before your OS accesses the Internet. This post is a summary of commands about Firewalld." />
-<link rel="canonical" href="http://localhost:4000/blog/note/2020-10-15-CMD-of-Firewalld/" />
-<meta property="og:url" content="http://localhost:4000/blog/note/2020-10-15-CMD-of-Firewalld/" />
+<link rel="canonical" href="http://localhost:4000/blog/note/2020-10-15-cmd-of-firewalld/" />
+<meta property="og:url" content="http://localhost:4000/blog/note/2020-10-15-cmd-of-firewalld/" />
 <meta property="og:site_name" content="IForester" />
 <meta property="og:image" content="http://localhost:4000/assets/img/blog/cmd%20of%20firewalld.jpg" />
 <meta property="og:type" content="article" />
@@ -56,7 +58,7 @@ Powered by Hydejack v9.0.4 <https://hydejack.com/>
 <meta property="twitter:image" content="http://localhost:4000/assets/img/blog/cmd%20of%20firewalld.jpg" />
 <meta property="twitter:title" content="A short CMD memo of Firewalld on RHEL8/CentOS8" />
 <script type="application/ld+json">
-{"description":"Firewalld is elemental protection for RHEL 8 or CentOS 8. Well set Firewalld service should be primary before your OS accesses the Internet. This post is a summary of commands about Firewalld.","headline":"A short CMD memo of Firewalld on RHEL8/CentOS8","dateModified":"2020-10-17T18:56:06+08:00","datePublished":"2020-10-15T00:00:00+08:00","url":"http://localhost:4000/blog/note/2020-10-15-CMD-of-Firewalld/","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/blog/note/2020-10-15-CMD-of-Firewalld/"},"@type":"BlogPosting","image":"http://localhost:4000/assets/img/blog/cmd%20of%20firewalld.jpg","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"http://localhost:4000/assets/img/logo.png"},"name":"Jerry Chung"},"author":{"@type":"Person","name":"Jerry Chung"},"@context":"https://schema.org"}</script>
+{"description":"Firewalld is elemental protection for RHEL 8 or CentOS 8. Well set Firewalld service should be primary before your OS accesses the Internet. This post is a summary of commands about Firewalld.","headline":"A short CMD memo of Firewalld on RHEL8/CentOS8","dateModified":"2020-10-17T23:37:06+08:00","datePublished":"2020-10-15T00:00:00+08:00","url":"http://localhost:4000/blog/note/2020-10-15-cmd-of-firewalld/","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/blog/note/2020-10-15-cmd-of-firewalld/"},"@type":"BlogPosting","image":"http://localhost:4000/assets/img/blog/cmd%20of%20firewalld.jpg","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"http://localhost:4000/assets/img/logo.png"},"name":"Jerry Chung"},"author":{"@type":"Person","name":"Jerry Chung"},"@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -239,7 +241,7 @@ Left here for reference, feel free to delete.
 
 
 
-<article id="post-blog-note-CMD of Firewalld" class="page post mb6" role="article">
+<article id="post-blog-note-cmd of firewalld" class="page post mb6" role="article">
   <header>
     <h1 class="post-title flip-project-title">
       
@@ -518,7 +520,7 @@ in <span>Blog</span> / <a href="/note/" class="flip-title">Note</a>
   <li>
     <p>Check if port 8080 opens</p>
 
-    <p><code class="language-plaintext highlighter-rouge">#firewall-cmd --query-port=8080/tcp</code></p>
+    <p><code class="language-plaintext highlighter-rouge"># firewall-cmd --query-port=8080/tcp</code></p>
   </li>
 </ul>
 
@@ -642,7 +644,7 @@ in <span>Blog</span> / <a href="/note/" class="flip-title">Note</a>
     
 
 
-  <aside class="related mb4" role="complementary">  <h2 class="hr-bottom">Related Posts</h2>  <ul class="related-posts">                  <li class="h4">  <a href="/blog/diary/2020-10-04-farewell-tsingtao/" class="flip-title"><span>再会，岛城</span></a>  <time class="faded fine" datetime="2020-10-04T00:00:00+08:00">04 Oct 2020</time></li>                        <li class="h4">  <a href="/blog/note/2020-10-01-welcome-to-iforester/" class="flip-title"><span>Welcome to IForester</span></a>  <time class="faded fine" datetime="2020-10-01T00:00:00+08:00">01 Oct 2020</time></li>            </ul></aside>
+  <aside class="related mb4" role="complementary">  <h2 class="hr-bottom">Related Posts</h2>  <ul class="related-posts">                  <li class="h4">  <a href="/blog/note/2020-10-17-ssh-login/" class="flip-title"><span>The common usages of SSH login</span></a>  <time class="faded fine" datetime="2020-10-17T00:00:00+08:00">17 Oct 2020</time></li>                        <li class="h4">  <a href="/blog/diary/2020-10-04-farewell-tsingtao/" class="flip-title"><span>再会，岛城</span></a>  <time class="faded fine" datetime="2020-10-04T00:00:00+08:00">04 Oct 2020</time></li>                        <li class="h4">  <a href="/blog/note/2020-10-01-welcome-to-iforester/" class="flip-title"><span>Welcome to IForester</span></a>  <time class="faded fine" datetime="2020-10-01T00:00:00+08:00">01 Oct 2020</time></li>            </ul></aside>
 
   
 
