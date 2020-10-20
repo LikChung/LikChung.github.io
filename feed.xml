@@ -1,0 +1,473 @@
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en-us"><generator uri="https://jekyllrb.com/" version="4.1.1">Jekyll</generator><link href="https://iforester.me/feed.xml" rel="self" type="application/atom+xml" /><link href="https://iforester.me/" rel="alternate" type="text/html" hreflang="en-us" /><updated>2020-10-20T16:27:35+08:00</updated><id>https://iforester.me/feed.xml</id><title type="html">IForester</title><subtitle>A personal blog site by Jerry Chung.
+</subtitle><author><name>Jerry Chung</name><email>lik_chung@163.com</email></author><entry><title type="html">The common usages of SSH login</title><link href="https://iforester.me/blog/note/2020-10-17-ssh-login/" rel="alternate" type="text/html" title="The common usages of SSH login" /><published>2020-10-17T00:00:00+08:00</published><updated>2020-10-20T15:59:03+08:00</updated><id>https://iforester.me/blog/note/ssh%20login</id><content type="html" xml:base="https://iforester.me/blog/note/2020-10-17-ssh-login/">&lt;p&gt;There are roughly three ways to use SSH to log in to a remote Linux server: &lt;strong&gt;password&lt;/strong&gt;, &lt;strong&gt;key&lt;/strong&gt;, and &lt;strong&gt;certificate&lt;/strong&gt;. This post will focus on how to use these three methods of SSH login to remote Linux and will not go through the SSH principles or the underlying protocols. Furthermore, this article only discusses Linux and macOS-based SSH usage. If you want to use ssh in windows, you need third-party software support.&lt;/p&gt;
+
+&lt;h3 id=&quot;1-password&quot;&gt;1. Password&lt;/h3&gt;
+
+&lt;p&gt;Assuming you want to log in to the remote server with a user name, you can reach it with a simple command.&lt;/p&gt;
+
+&lt;p&gt;  &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;$ ssh user@host&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;The default port for SSH is 22. if you are using another port, &lt;em&gt;e.g.&lt;/em&gt; 233, add the parameter &lt;em&gt;p&lt;/em&gt;.&lt;/p&gt;
+
+&lt;p&gt;  &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;$ ssh user@host -p 233&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;The first connection will prompt that the host’s authenticity cannot be confirmed. Only public key fingerprint is known, whether to continue the connection or not.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;The authenticity of host can’t be established.&lt;/p&gt;
+
+  &lt;p&gt;RSA key fingerprint is xxxxxx # 128-bit fingerprint MD5 value.&lt;/p&gt;
+
+  &lt;p&gt;Are you sure you want to continue connecting (yes/no)?&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;The remote server must publicize the public key fingerprints through a website or other method, and the user can compare them on their own to decide whether to connect.&lt;/p&gt;
+
+&lt;p&gt;When the remote server’s public key is accepted, it is saved in &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;$HOME/.ssh/known_hosts&lt;/code&gt; without warning the next time. If it is saved in &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;/etc/ssh/ssh_known_hosts&lt;/code&gt;, it takes effect for all local users.&lt;/p&gt;
+
+&lt;h3 id=&quot;2-key&quot;&gt;2. Key&lt;/h3&gt;
+
+&lt;p&gt;The principle of key login is that the user stores his public key on the remote server. When logging in, the remote server sends a random string to the user, who encrypts it with his or her private key and sends it back. The remote server decrypts it with the pre-stored public key, and if successful, it proves that the user is trustworthy and directly allows the login, no longer requiring a password.&lt;/p&gt;
+
+&lt;p&gt;To log in with key, you first need to check the file &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;/etc/ssh/sshd_config&lt;/code&gt;, paying attention to following options.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;RSAAuthentication yes&lt;/p&gt;
+
+  &lt;p&gt;PubkeyAuthentication yes&lt;/p&gt;
+
+  &lt;p&gt;AuthorizedKeysFile .ssh/authorized_keys&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Check the permissions of &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;$HOME&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;$HOME/.ssh/&lt;/code&gt; and &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;authorized_keys&lt;/code&gt; on the remote server; otherwise the key login will be denied.&lt;/p&gt;
+
+&lt;p&gt;  &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;# chown user:group $HOME/.ssh/&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;  &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;$ chmod 700 $HOME/.ssh/&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;  &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;$ chmod 600 $HOME/.ssh/authorized_keys&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Now you can generate your own public key on local machine.&lt;/p&gt;
+
+&lt;p&gt;  &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;$ ssh-keygen&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;When generating, it will ask if the private key needs passphrase. When it is finished, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;id_rsa&lt;/code&gt; and &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;id_rsa.pub&lt;/code&gt; are generated in the folder &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;$HOME/.ssh/&lt;/code&gt;, the former for the private key and the latter for the public key.&lt;/p&gt;
+
+&lt;p&gt;Transfer the &lt;strong&gt;public key&lt;/strong&gt; to a remote server. Parameter &lt;em&gt;p&lt;/em&gt; may be necessary：&lt;/p&gt;
+
+&lt;p&gt;  &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;$ ssh-copy-id user@host -p 233&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;or&lt;/p&gt;
+
+&lt;p&gt;  &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;$ scp -p 233 $HOME/.ssh/id_rsa.pub user@host:$HOME/.ssh/id_rsa.pub&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Append the &lt;strong&gt;public key&lt;/strong&gt; to the remote server authentication file:&lt;/p&gt;
+
+&lt;p&gt;  &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;$ cat /home/id_rsa.pub &amp;gt;&amp;gt; ~/.ssh/authorized_keys&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Don’t forget to reload &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;sshd.service&lt;/code&gt; to make it works.&lt;/p&gt;
+
+&lt;p&gt;  &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;# systemctl restart sshd.service&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;To make logging in easier, you can configure a quick login in local file &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;$HOME/.ssh/config&lt;/code&gt;.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Host            # alias&lt;/p&gt;
+
+  &lt;p&gt;HostName        # ip or domain of remote server&lt;/p&gt;
+
+  &lt;p&gt;Port            # ssh port&lt;/p&gt;
+
+  &lt;p&gt;User            # user name&lt;/p&gt;
+
+  &lt;p&gt;IdentityFile    # $HOME/.ssh/id_rsa&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Then, you can log in using the alias in the configuration file.&lt;/p&gt;
+
+&lt;p&gt;  &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;$ ssh host-alias&lt;/code&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;3-certificate&quot;&gt;3. Certificate&lt;/h3&gt;
+
+&lt;p&gt;With certificate login, user and server don’t need to know each other’s public key in advance, they only need to exchange their respective certificates to verify whether the certificate is trustworthy. And the certificate can set the validity period.&lt;/p&gt;
+
+&lt;p&gt;The &lt;strong&gt;Certificate1 Authority (CA)&lt;/strong&gt; issues &lt;strong&gt;server certificates&lt;/strong&gt; for trusted servers and &lt;strong&gt;user certificates&lt;/strong&gt; for trusted users.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;YOU NEED A CA SERVER&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;h4 id=&quot;step-1&quot;&gt;STEP 1&lt;/h4&gt;
+
+&lt;p&gt;Generate a key for the CA to issue a user certificate. This will generates a pair of keys in &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;$HOME/.ssh&lt;/code&gt;: &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;user_ca&lt;/code&gt; and &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;user_ca.pub&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;  &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;$ ssh-keygen -t rsa -b 4096 -f $HOME/.ssh/user_ca -C user_ca&lt;/code&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;-t rsa: RSA algorithm&lt;/li&gt;
+  &lt;li&gt;-b 4096: key is 4096 bits&lt;/li&gt;
+  &lt;li&gt;-f $HOME/.ssh/user_ca: location and file name of the key&lt;/li&gt;
+  &lt;li&gt;-C user_ca: a note string of the key&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Generate a key for the CA to issue a server certificate. This will generates a pair of keys in &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;$HOME/.ssh&lt;/code&gt;: &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;host_ca&lt;/code&gt; and &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;host_ca.pub&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;  &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;$ ssh-keygen -t rsa -b 4096 -f $HOME/.ssh/host_ca -C host_ca&lt;/code&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;step-2&quot;&gt;STEP 2&lt;/h4&gt;
+
+&lt;p&gt;CA issues server certificate&lt;/p&gt;
+
+&lt;p&gt;  &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;# ssh-keygen -f /etc/ssh/ssh_host_rsa_key -b 4096 -t rsa&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;The above command generates private key &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ssh_host_rsa_key&lt;/code&gt; and public key &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ssh_host_rsa_key.pub&lt;/code&gt; in &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;/etc/ssh&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;CA then uses the key &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;host_ca&lt;/code&gt; to issue the server certificate &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ssh_host_rsa_key-cert.pub&lt;/code&gt; for the public key &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ssh_host_rsa_key.pub&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;  &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;$ ssh-keygen -s host_ca -I host.example.com -h -n host.example.com -V +52w ssh_host_rsa_key.pub&lt;/code&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;-s: the key&lt;/li&gt;
+  &lt;li&gt;-I: identity string as note&lt;/li&gt;
+  &lt;li&gt;-h: specify the certificate is a server certificate, not a user certificate&lt;/li&gt;
+  &lt;li&gt;-n host.example.com: the domain name of the server&lt;/li&gt;
+  &lt;li&gt;-V +52w: the validity of the certificate, here it is 52 weeks (one year)&lt;/li&gt;
+  &lt;li&gt;ssh_host_rsa_key.pub: server public key.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Finally, check the permission&lt;/p&gt;
+
+&lt;p&gt;  &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;$ chmod 600 ssh_host_rsa_key-cert.pub&lt;/code&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;step-3&quot;&gt;STEP 3&lt;/h4&gt;
+
+&lt;p&gt;In local machine:&lt;/p&gt;
+
+&lt;p&gt;  &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;$ ssh-keygen -f /.ssh/user_key -b 4096 -t rsa&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;The above command generates private key &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;user_key&lt;/code&gt; and public key &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;user_key.pub&lt;/code&gt; in &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;$HOME/.ssh&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;Upload public key &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;user_key.pub&lt;/code&gt; to CA, then CA uses the key &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;user_ca&lt;/code&gt; to issue the server certificate &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;user_key-cert.pub&lt;/code&gt; for the public key &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;user_key.pub&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;  &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;$ ssh-keygen -s user_ca -I user@example.com -n user -V +1d user_key.pub&lt;/code&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;-s: the key&lt;/li&gt;
+  &lt;li&gt;-I: identity string as note&lt;/li&gt;
+  &lt;li&gt;-n user: user name&lt;/li&gt;
+  &lt;li&gt;-V +1d: the validity period of the certificate, here is 1 day, to force users to apply for the certificate once a day to improve security. By default, the certificate is valid forever.&lt;/li&gt;
+  &lt;li&gt;user_key.pub: the user’s public key.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Finally, check the permission&lt;/p&gt;
+
+&lt;p&gt;  &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;$ chmod 600 user_key-cert.pub&lt;/code&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;step-4&quot;&gt;STEP 4&lt;/h4&gt;
+
+&lt;p&gt;Send server certificate to remote server:&lt;/p&gt;
+
+&lt;p&gt;  &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;$ scp $HOME/.ssh/ssh_host_rsa_key-cert.pub root@host.example.com:/etc/ssh/&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Modify &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;/etc/ssh/sshd_config&lt;/code&gt;:&lt;/p&gt;
+
+&lt;p&gt;  &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;HostCertificate /etc/ssh/ssh_host_rsa_key-cert.pub&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Reload sshd service:&lt;/p&gt;
+
+&lt;p&gt;  &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;# systemctl restart sshd&lt;/code&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;step-5&quot;&gt;STEP 5&lt;/h4&gt;
+
+&lt;p&gt;Sent user public key to remote server:&lt;/p&gt;
+
+&lt;p&gt;  &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;$ scp $HOME/.ssh/user_ca.pub root@host.example.com:/etc/ssh&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Modify &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;/etc/ssh/sshd_config&lt;/code&gt;:&lt;/p&gt;
+
+&lt;p&gt;  &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;TrustedUserCAKeys /etc/ssh/user_ca.pub&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Reload sshd service:&lt;/p&gt;
+
+&lt;p&gt;  &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;# systemctl restart sshd&lt;/code&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;step-6&quot;&gt;STEP 6&lt;/h4&gt;
+
+&lt;p&gt;Send &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;user_key-cert.pub&lt;/code&gt; from CA to local machine and keep it with &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;user_key&lt;/code&gt; in the same folder.&lt;/p&gt;
+
+&lt;h4 id=&quot;step-7&quot;&gt;STEP 7&lt;/h4&gt;
+
+&lt;p&gt;Install CA public key to local machine. Modify the file &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;$HOME/.ssh.ssh_known_hosts&lt;/code&gt; to apoend the content of &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;host_ca.pub&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;Now you can login remote server with certificate.&lt;/p&gt;
+
+&lt;p&gt;  &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;$ ssh -i $HOME/.ssh/user_key user@host.example.com&lt;/code&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;ps-how-to-revoke-certificate&quot;&gt;P.S. How to revoke certificate&lt;/h4&gt;
+
+&lt;p&gt;To revoke server certificate, delete the conetent of &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;@cert-authority&lt;/code&gt; in the file &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;known_hosts&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;To revoke user certificate, create a file &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;/etc/ssh/revoked_keys&lt;/code&gt; in remote server and modify &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;sshd_config&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;  &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;RevokedKeys /etc/ssh/revoked_keys&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;The &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;revoked_keys&lt;/code&gt; store user certificate that are no longer trusted.&lt;/p&gt;
+
+&lt;p&gt;  &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;$ ssh-keygen -kf /etc/ssh/revoked_keys -z 1 $HOME/.ssh/user_key.pub&lt;/code&gt;&lt;/p&gt;</content><author><name>Jerry Chung</name><email>lik_chung@163.com</email></author><category term="blog" /><category term="note" /><summary type="html">There are roughly three ways to use SSH to log in to a remote Linux server: password, key, and certificate. This post will focus on how to use these three methods of SSH login to remote Linux and will not go through the SSH principles or the underlying protocols. Furthermore, this article only discusses Linux and macOS-based SSH usage. If you want to use ssh in windows, you need third-party software support.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://iforester.me/assets/img/blog/ssh%20login.jpg" /><media:content medium="image" url="https://iforester.me/assets/img/blog/ssh%20login.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">A short cmd memo of Firewalld on RHEL8/CentOS8</title><link href="https://iforester.me/blog/note/2020-10-15-cmd-of-firewalld/" rel="alternate" type="text/html" title="A short cmd memo of Firewalld on RHEL8/CentOS8" /><published>2020-10-15T00:00:00+08:00</published><updated>2020-10-20T01:06:05+08:00</updated><id>https://iforester.me/blog/note/cmd%20of%20firewalld</id><content type="html" xml:base="https://iforester.me/blog/note/2020-10-15-cmd-of-firewalld/">&lt;p&gt;Please note that &lt;strong&gt;root&lt;/strong&gt; or &lt;strong&gt;sudo&lt;/strong&gt; level privileges are required to conduct all commands below.&lt;/p&gt;
+
+&lt;h3 id=&quot;part-i-using-systemctl-to-simply-manage-firewalld&quot;&gt;PART I. Using systemctl to simply manage Firewalld&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;Lock Firewalld to suspend operation&lt;/p&gt;
+
+    &lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;# systemctl mask firewalld&lt;/code&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Unlock Firewalld&lt;/p&gt;
+
+    &lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;# systemctl unmask firewalld&lt;/code&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Start Firewalld&lt;/p&gt;
+
+    &lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;# systemctl start firewalld.service&lt;/code&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Stop Firewalld&lt;/p&gt;
+
+    &lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;# systemctl stop firewalld.service&lt;/code&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Reload Firewalld with possibility of restarting service&lt;/p&gt;
+
+    &lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;# systemctl reload firewalld.service&lt;/code&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Restart Firewalld&lt;/p&gt;
+
+    &lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;# systemctl restart firewalld.service&lt;/code&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Display the status of Firewalld&lt;/p&gt;
+
+    &lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;# systemctl status firewalld.service&lt;/code&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Autorun Firewalld after boot&lt;/p&gt;
+
+    &lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;# systemctl enable firewalld.service&lt;/code&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Disable autorun of Firewalld&lt;/p&gt;
+
+    &lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;# systemctl disable firewalld.service&lt;/code&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Check the validity of Firewalld autorun&lt;/p&gt;
+
+    &lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;# systemctl is-enabled firewalld.service&lt;/code&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Check all services list&lt;/p&gt;
+
+    &lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;# systemctl list-unit-files&lt;/code&gt;&lt;/p&gt;
+
+    &lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;# systemctl list-unit-files | grep enabled&lt;/code&gt;    # add &lt;em&gt;grep&lt;/em&gt; to filtrate&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Check failed services&lt;/p&gt;
+
+    &lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;# systemctl --failed&lt;/code&gt;&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;part-ii-some-commends-from-firewalld-itself&quot;&gt;PART II. Some commends from Firewalld itself&lt;/h3&gt;
+
+&lt;h4 id=&quot;1-basic-command-lines&quot;&gt;1. Basic command lines&lt;/h4&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;Check Firewalld status&lt;/p&gt;
+
+    &lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;# firewall-cmd --state&lt;/code&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Update Firewalld rules&lt;/p&gt;
+
+    &lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;# firewall-cmd --reload&lt;/code&gt;  # dynamically reload without restarting&lt;/p&gt;
+
+    &lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;# firewall-cmd --complete-reload&lt;/code&gt;  # with restarting&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Check all open ports&lt;/p&gt;
+
+    &lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;# firewall-cmd --list-ports&lt;/code&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Check allowed services&lt;/p&gt;
+
+    &lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;# firewall-cmd --list-services&lt;/code&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Acquire support services&lt;/p&gt;
+
+    &lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;# firewall-cmd --get-services&lt;/code&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Reject all packages in urgency&lt;/p&gt;
+
+    &lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;# firewall-cmd --panic-on&lt;/code&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Cancel packages rejection&lt;/p&gt;
+
+    &lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;# firewall-cmd --panic-off&lt;/code&gt;&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;2-zone-settings&quot;&gt;2. Zone settings&lt;/h4&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;Check all zones&lt;/p&gt;
+
+    &lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;# firewall-cmd --list-all-zones&lt;/code&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Check active zone&lt;/p&gt;
+
+    &lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;# firewall-cmd --get-active-zones&lt;/code&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Set default public as default zone&lt;/p&gt;
+
+    &lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;# firewall-cmd --set-default-zone=public&lt;/code&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Check default zone&lt;/p&gt;
+
+    &lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;# firewall-cmd --get-default-zone&lt;/code&gt;&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;3-interface&quot;&gt;3. Interface&lt;/h4&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;Get the zone of interface eth0&lt;/p&gt;
+
+    &lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;# firewall-cmd --get-zone-of-interface=eth0&lt;/code&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Add interface eth0 to public zone&lt;/p&gt;
+
+    &lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;# firewall-cmd --zone=public --add-interface=eth0&lt;/code&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Delete interface eth0 from public zone&lt;/p&gt;
+
+    &lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;# firewall-cmd --zone=public --remove-interface=eth0&lt;/code&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Add interface eth0 to default zone&lt;/p&gt;
+
+    &lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;# firewall-cmd --zone=default --change-interface=eth0&lt;/code&gt;&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;4-port-configurations&quot;&gt;4. Port configurations&lt;/h4&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;Permanently open port 80 in global pattern&lt;/p&gt;
+
+    &lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;# firewall-cmd --add-port=80/tcp --permanent&lt;/code&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Permanently close port 80 in global pattern&lt;/p&gt;
+
+    &lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;# firewall-cmd --remove-port=80/tcp --permanent&lt;/code&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Permanently open port 65001 - 65010 in global pattern&lt;/p&gt;
+
+    &lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;# firewall-cmd --add-port=65001-65010/tcp --permanent&lt;/code&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Permanently open port 80 in public zone&lt;/p&gt;
+
+    &lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;# firewall-cmd  --zone=public --add-port=80/tcp --permanent&lt;/code&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Permanently close port 80 in public zonen&lt;/p&gt;
+
+    &lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;# firewall-cmd  --zone=public --remove-port=80/tcp --permanent&lt;/code&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Permanently open port 65001 - 65010 in public zone&lt;/p&gt;
+
+    &lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;# firewall-cmd  --zone=public --add-port=65001-65010/tcp --permanent&lt;/code&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Check if port 8080 opens&lt;/p&gt;
+
+    &lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;# firewall-cmd --query-port=8080/tcp&lt;/code&gt;&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;</content><author><name>Jerry Chung</name><email>lik_chung@163.com</email></author><category term="blog" /><category term="note" /><summary type="html">Please note that root or sudo level privileges are required to conduct all commands below.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://iforester.me/assets/img/blog/cmd%20of%20firewalld.jpg" /><media:content medium="image" url="https://iforester.me/assets/img/blog/cmd%20of%20firewalld.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">再会，岛城</title><link href="https://iforester.me/blog/diary/2020-10-04-farewell-tsingtao/" rel="alternate" type="text/html" title="再会，岛城" /><published>2020-10-04T00:00:00+08:00</published><updated>2020-10-18T17:17:16+08:00</updated><id>https://iforester.me/blog/diary/farewell%20tsingtao</id><content type="html" xml:base="https://iforester.me/blog/diary/2020-10-04-farewell-tsingtao/">&lt;h4 id=&quot;1&quot;&gt;&lt;center&gt;1&lt;/center&gt;&lt;/h4&gt;
+
+&lt;p&gt;凌晨四点四十，洗漱并收拾好行李，把剩下的半杯温水喝干，背上行囊，抽出房卡，掩上房门。&lt;/p&gt;
+
+&lt;p&gt;乘电梯下到一楼，大堂空空荡荡，只有头上两盏小吊灯发出淡淡的橘色的光。前台没人，我打算把房卡扔在柜台一走了之——快捷酒店的优点之一就是免押金，退房极其方便——却还是鬼使神差轻轻念出声，「你好？」&lt;/p&gt;
+
+&lt;p&gt;「您好，我在。」值班的前台小姐从休息室探出半个身。&lt;/p&gt;
+
+&lt;p&gt;岛城的秋季，凌晨已然寒凉，她依然穿着短袖的夏日制服，齐肩短发整整齐齐梳在耳后，银色细框眼镜和口罩也戴得一丝不苟。我想我的唐突没有叨扰她休息。她弯弯的眼睛里仍然带着笑意，我记得她，第一天也是她为我办理入住，那时望着她消瘦的肩膀心想，她摘掉口罩应该会是一个文弱可爱的女子。她胸卡上是个单字名，「娟」。&lt;/p&gt;
+
+&lt;p&gt;「不好意思，我要退房了。」&lt;/p&gt;
+
+&lt;p&gt;「那您把房卡留下就行了呀。」弯弯眼流出一丝善意的苦笑。&lt;/p&gt;
+
+&lt;p&gt;「我……担心弄丢了。」我报以尴尬的一笑。不知道这灵光一闪的解释能否使她信服，连我自己都感到生硬。或许在我心底是期待着离别时有一个人可以听我道别吧？&lt;/p&gt;
+
+&lt;p&gt;却终于没有说再见，只是向她尬笑着点点头，故作淡定着转身开门，跨出酒店。&lt;/p&gt;
+
+&lt;h4 id=&quot;2&quot;&gt;&lt;center&gt;2&lt;/center&gt;&lt;/h4&gt;
+
+&lt;p&gt;记忆中似乎是第二次看这样冷清的京口路。&lt;/p&gt;
+
+&lt;p&gt;我裹紧身上的风衣站在路边等待网约车。夜色尚浓，一个环卫工在昏黄的路灯下扫地，苕帚与路面摩擦发出稀稀疏疏的声响，一下一下不紧不慢，原来寂静时听着意外悦耳。两辆出租车路过，放慢车速开启双闪揽客，我摆摆手，望着他们载着失望驶去。&lt;/p&gt;
+
+&lt;p&gt;很快等来了去机场的网约车。坐上后座，看窗外闪过熟悉的书院路、乐客城、银座……它们来了，又逐一晃过消失在眼前。岛城生活七年，我无疑见证李沧从破败到繁华。李沧何尝不是同样见证了我从一个人，到有她陪伴，再回到一个人。&lt;/p&gt;
+
+&lt;p&gt;初次来李沧就是和菁一起，大二那年，也是秋天，和她吃了一顿尴尬的火锅，回校时在乐客城前换车，以为永远等不来 385 路。两年后我们交往了，时不时来这里的商圈打打牙祭，以至于，此次返回岛城我还是习惯在这里觅食，那些以前常去的店，尤其菁喜欢的几家，神奇地在年初疫情冲击下还顽强生存下来，我很爱的一家日式拉面店倒是关门大吉。第一次看午夜场电影首映，也是菁拉着我去的，我记得看了《疯狂动物城》。后来菁去英国念书，我一个人时不时来李沧打打牙祭，也试过拍食物勾她馋虫，乐此不疲。再后来，我来得少了。&lt;/p&gt;
+
+&lt;p&gt;到最后，我也离开了岛城。&lt;/p&gt;
+
+&lt;h4 id=&quot;3&quot;&gt;&lt;center&gt;3&lt;/center&gt;&lt;/h4&gt;
+
+&lt;p&gt;大概睡眠不足，眼睛特别容易干涩。生物有自己的非意识应激反应，眼球干涩时，泪腺自然而然要开工呢。车沿着重庆路一路飞驰畅通无阻，司机静静地开，似乎没有开口与作为乘客的我尬聊的想法，我心生感激。&lt;/p&gt;
+
+&lt;p&gt;离流亭还有一阵子路程，我决定趁机闭眼假寐，想想过去几天的行程。&lt;/p&gt;
+
+&lt;p&gt;两天前的下午抵达岛城，一下飞机打车朝出入境管理局狂奔。此行的首要目的便是尽快办理相关手续。接近四点时到达办事大厅，行云流水顺利提交申请，花不了半小时。岛城的政务高效确实与家乡小镇的拖沓云泥之别。只是少数族裔的身份仍会引起些许警觉与问询，这一点，我只能认为是时代的小玩笑。&lt;/p&gt;
+
+&lt;p&gt;次日早晨，返校拜访了恩师 UMi 桑。我们在他的办公室喝茶闲聊，他亲切依旧，但比我毕业时又胖了一圈，和从前一样坐在无靠背圆矮凳上，显得更加吃力的样子。我们聊了他课题组的近况、我这一年磕磕绊绊的经历、今后的研究方向；探讨了某论文稿的安排和固相萃取的某个应用；唧唧歪歪调侃了某座城市，吐槽某已曝光的基因编辑丑闻和背后参与学校。关于毕业时我没能完成的一份手续，他主动提出替我办理，让我既感动又羞愧。没能拜谒江老师及同为恩师的老李，老李正巧忙于研究生推免会议。我发了条短讯向他致歉没有提前预约礼数不周。简短的通讯中，依稀能捕捉到老李和 UMi 桑关系的微妙僵硬。&lt;/p&gt;
+
+&lt;p&gt;离开 UMi 桑办公室，沿八区小石阶上坡，四位背书包的女生走在我前面，一边说说笑笑。途径从前作为大课教室和社团活动处的八区，如今八区已被改为咖啡店供学生自习和小憩。咖啡店装修成细致考究的浅黄木质风格，入门后向内的墙上有面巨大的屏幕，实时显示当前领海的天气与海况。学生低头忙着自己的课业，安安静静。空气中弥漫着好闻的咖啡香。我要了一杯拿铁，边啜饮边沿着樱花大道向北走。秋无漫枝樱，落叶似客心。&lt;/p&gt;
+
+&lt;p&gt;午饭和心莹姐一起吃。她预订了五四广场附近一家饭店的卡座，饭店装潢颇为豪华。虽然在我的要求下只要了几碟家常菜，仍品得出烹调考究，这份隆重待遇让我受宠若惊，忙以去洗手间为借口潜入前台付账，岂知心莹姐早已提前结账。心莹姐正犯着湿疹，她的工作性质决定她很难比一般白领轻松，加之体质羸弱，以致她似乎常常犯着这样那样的小疾。回忆起来，约两年初识心莹姐的时候，她正严重感冒，神态疲倦低头做着笔记，很少回应我。起初我以为又碰到一位业余的江湖游医，且态度冷淡，后来半年来访下来，才深切感受到她的包容与温暖，和关键时刻给予我最坚实的支撑。她是我的心理咨询师。&lt;/p&gt;
+
+&lt;p&gt;告别心莹姐后的整个下午，我沿着海堤走了一圈五四广场，折向万象城闲逛，把最后的时间消磨在书店。&lt;/p&gt;
+
+&lt;h4 id=&quot;4&quot;&gt;&lt;center&gt;4&lt;/center&gt;&lt;/h4&gt;
+
+&lt;p&gt;流亭机场，赶早班飞机的乘客比想象中多。熙来人往的大厅里，有人结伴而行，有人独自动身，有人神色匆忙，有人泰然自处，更多人面无表情，世界本来就有无尽的不同姿态。我身边没有陪同者，我拥有的仅仅一个相伴三年的背包，但不意味着我始终孤单。我曾有过美好的回忆，此刻亦拥有挂念之人，也许他们同样也在某一刻思念着我。想到如此，不禁如释重负，我低头对挪不动的双腿默默说，走吧，走吧。&lt;/p&gt;</content><author><name>Jerry Chung</name><email>lik_chung@163.com</email></author><category term="blog" /><category term="diary" /><summary type="html">1</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://iforester.me/assets/img/blog/farewell%20tsingtao.jpg" /><media:content medium="image" url="https://iforester.me/assets/img/blog/farewell%20tsingtao.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Hi, welcome to IForester</title><link href="https://iforester.me/blog/note/2020-10-01-welcome-to-iforester/" rel="alternate" type="text/html" title="Hi, welcome to IForester" /><published>2020-10-01T00:00:00+08:00</published><updated>2020-10-20T01:07:47+08:00</updated><id>https://iforester.me/blog/note/welcome%20to%20iforester</id><content type="html" xml:base="https://iforester.me/blog/note/2020-10-01-welcome-to-iforester/">&lt;p&gt;&lt;strong&gt;&lt;a href=&quot;https://iforester.me/&quot;&gt;IForester&lt;/a&gt;&lt;/strong&gt; is a personal blog built by Jerry Chung on Oct 1, 2020.&lt;/p&gt;
+
+&lt;p&gt;This site aims to keeping a diary and taking notes in the long term.&lt;/p&gt;
+
+&lt;p&gt;Here is just the first post for a test purpose.&lt;/p&gt;
+
+&lt;p&gt;More blog posts will be updated in the coming future.&lt;/p&gt;
+
+&lt;p&gt;You’re welcome to come back from time to time.&lt;/p&gt;
+
+&lt;p&gt;Honestly wish you enjoy every moment we meet together in this misty &lt;strong&gt;FOREST&lt;/strong&gt;.&lt;/p&gt;</content><author><name>Jerry Chung</name><email>lik_chung@163.com</email></author><category term="blog" /><category term="note" /><summary type="html">IForester is a personal blog built by Jerry Chung on Oct 1, 2020.</summary></entry></feed>
