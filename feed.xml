@@ -1,9 +1,9 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en-us"><generator uri="https://jekyllrb.com/" version="4.1.1">Jekyll</generator><link href="https://iforester.me/feed.xml" rel="self" type="application/atom+xml" /><link href="https://iforester.me/" rel="alternate" type="text/html" hreflang="en-us" /><updated>2020-10-20T01:45:02+08:00</updated><id>https://iforester.me/feed.xml</id><title type="html">IForester</title><subtitle>A personal blog site by Jerry Chung.
-</subtitle><author><name>Jerry Chung</name><email>lik_chung@163.com</email></author><entry><title type="html">The common usages of SSH login</title><link href="https://iforester.me/blog/note/2020-10-17-ssh-login/" rel="alternate" type="text/html" title="The common usages of SSH login" /><published>2020-10-17T00:00:00+08:00</published><updated>2020-10-18T17:17:24+08:00</updated><id>https://iforester.me/blog/note/ssh%20login</id><content type="html" xml:base="https://iforester.me/blog/note/2020-10-17-ssh-login/">&lt;p&gt;There are roughly three ways to use SSH to log in to a remote Linux server: &lt;strong&gt;password&lt;/strong&gt;, &lt;strong&gt;key&lt;/strong&gt;, and &lt;strong&gt;certificate&lt;/strong&gt;. This post will focus on how to use these three methods of SSH login to remote Linux and will not go through the SSH principles or the underlying protocols. Furthermore, this article only discusses Linux and macOS-based SSH usage. If you want to use ssh in windows, you need third-party software support.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en-us"><generator uri="https://jekyllrb.com/" version="4.1.1">Jekyll</generator><link href="https://iforester.me/feed.xml" rel="self" type="application/atom+xml" /><link href="https://iforester.me/" rel="alternate" type="text/html" hreflang="en-us" /><updated>2020-10-20T16:07:59+08:00</updated><id>https://iforester.me/feed.xml</id><title type="html">IForester</title><subtitle>A personal blog site by Jerry Chung.
+</subtitle><author><name>Jerry Chung</name><email>lik_chung@163.com</email></author><entry><title type="html">The common usages of SSH login</title><link href="https://iforester.me/blog/note/2020-10-17-ssh-login/" rel="alternate" type="text/html" title="The common usages of SSH login" /><published>2020-10-17T00:00:00+08:00</published><updated>2020-10-20T15:59:03+08:00</updated><id>https://iforester.me/blog/note/ssh%20login</id><content type="html" xml:base="https://iforester.me/blog/note/2020-10-17-ssh-login/">&lt;p&gt;There are roughly three ways to use SSH to log in to a remote Linux server: &lt;strong&gt;password&lt;/strong&gt;, &lt;strong&gt;key&lt;/strong&gt;, and &lt;strong&gt;certificate&lt;/strong&gt;. This post will focus on how to use these three methods of SSH login to remote Linux and will not go through the SSH principles or the underlying protocols. Furthermore, this article only discusses Linux and macOS-based SSH usage. If you want to use ssh in windows, you need third-party software support.&lt;/p&gt;
 
 &lt;h3 id=&quot;1-password&quot;&gt;1. Password&lt;/h3&gt;
 
-&lt;p&gt;Assuming you want to log in to the remote host with a user name, you can reach it with a simple command.&lt;/p&gt;
+&lt;p&gt;Assuming you want to log in to the remote server with a user name, you can reach it with a simple command.&lt;/p&gt;
 
 &lt;p&gt;  &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;$ ssh user@host&lt;/code&gt;&lt;/p&gt;
 
@@ -21,15 +21,15 @@
   &lt;p&gt;Are you sure you want to continue connecting (yes/no)?&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;p&gt;The remote host must publicize the public key fingerprints through a website or other method, and the user can compare them on their own to decide whether to connect.&lt;/p&gt;
+&lt;p&gt;The remote server must publicize the public key fingerprints through a website or other method, and the user can compare them on their own to decide whether to connect.&lt;/p&gt;
 
-&lt;p&gt;When the remote host’s public key is accepted, it is saved in &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;$HOME/.ssh/known_hosts&lt;/code&gt; without warning the next time. If it is saved in &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;/etc/ssh/ssh_known_hosts&lt;/code&gt;, it takes effect for all local users.&lt;/p&gt;
+&lt;p&gt;When the remote server’s public key is accepted, it is saved in &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;$HOME/.ssh/known_hosts&lt;/code&gt; without warning the next time. If it is saved in &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;/etc/ssh/ssh_known_hosts&lt;/code&gt;, it takes effect for all local users.&lt;/p&gt;
 
 &lt;h3 id=&quot;2-key&quot;&gt;2. Key&lt;/h3&gt;
 
-&lt;p&gt;The principle of key login is that the user stores his public key on the remote host. When logging in, the remote host sends a random string to the user, who encrypts it with his or her private key and sends it back. The remote host decrypts it with the pre-stored public key, and if successful, it proves that the user is trustworthy and directly allows the login, no longer requiring a password.&lt;/p&gt;
+&lt;p&gt;The principle of key login is that the user stores his public key on the remote server. When logging in, the remote server sends a random string to the user, who encrypts it with his or her private key and sends it back. The remote server decrypts it with the pre-stored public key, and if successful, it proves that the user is trustworthy and directly allows the login, no longer requiring a password.&lt;/p&gt;
 
-&lt;p&gt;To log in with key, you first need to check the file &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;/etc/ssh/sshd_config&lt;/code&gt;, paying attention to following parameters.&lt;/p&gt;
+&lt;p&gt;To log in with key, you first need to check the file &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;/etc/ssh/sshd_config&lt;/code&gt;, paying attention to following options.&lt;/p&gt;
 
 &lt;blockquote&gt;
   &lt;p&gt;RSAAuthentication yes&lt;/p&gt;
@@ -47,7 +47,7 @@
 
 &lt;p&gt;  &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;$ chmod 600 $HOME/.ssh/authorized_keys&lt;/code&gt;&lt;/p&gt;
 
-&lt;p&gt;Now you can generate your own public key o n local machine.&lt;/p&gt;
+&lt;p&gt;Now you can generate your own public key on local machine.&lt;/p&gt;
 
 &lt;p&gt;  &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;$ ssh-keygen&lt;/code&gt;&lt;/p&gt;
 
@@ -163,7 +163,7 @@
 
 &lt;h4 id=&quot;step-4&quot;&gt;STEP 4&lt;/h4&gt;
 
-&lt;p&gt;Send server certificate to remote host:&lt;/p&gt;
+&lt;p&gt;Send server certificate to remote server:&lt;/p&gt;
 
 &lt;p&gt;  &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;$ scp $HOME/.ssh/ssh_host_rsa_key-cert.pub root@host.example.com:/etc/ssh/&lt;/code&gt;&lt;/p&gt;
 
@@ -177,7 +177,7 @@
 
 &lt;h4 id=&quot;step-5&quot;&gt;STEP 5&lt;/h4&gt;
 
-&lt;p&gt;Sent user public key to remote host:&lt;/p&gt;
+&lt;p&gt;Sent user public key to remote server:&lt;/p&gt;
 
 &lt;p&gt;  &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;$ scp $HOME/.ssh/user_ca.pub root@host.example.com:/etc/ssh&lt;/code&gt;&lt;/p&gt;
 
