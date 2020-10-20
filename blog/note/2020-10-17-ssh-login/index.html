@@ -1,0 +1,964 @@
+<!DOCTYPE html>
+<html lang="en"><!--
+ __  __                __                                     __
+/\ \/\ \              /\ \             __                    /\ \
+\ \ \_\ \   __  __    \_\ \      __   /\_\      __       ___ \ \ \/'\
+ \ \  _  \ /\ \/\ \   /'_` \   /'__`\ \/\ \   /'__`\    /'___\\ \ , <
+  \ \ \ \ \\ \ \_\ \ /\ \L\ \ /\  __/  \ \ \ /\ \L\.\_ /\ \__/ \ \ \\`\
+   \ \_\ \_\\/`____ \\ \___,_\\ \____\ _\ \ \\ \__/.\_\\ \____\ \ \_\ \_\
+    \/_/\/_/ `/___/> \\/__,_ / \/____//\ \_\ \\/__/\/_/ \/____/  \/_/\/_/
+                /\___/                \ \____/
+                \/__/                  \/___/
+
+Powered by Hydejack v9.0.4 <https://hydejack.com/>
+-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<head>
+  
+
+
+
+
+
+
+  
+    
+<!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>The common usages of SSH login | IForester</title>
+<meta name="generator" content="Jekyll v4.1.1" />
+<meta property="og:title" content="The common usages of SSH login" />
+<meta name="author" content="Jerry Chung" />
+<meta property="og:locale" content="en_us" />
+<meta name="description" content="SSH is a network protocol for encrypted logins between computers.In 1995, the Finnish academic Tatu Ylonen designed the SSH protocol, which became a fundamental solution for Internet security. This article is my notes on configuring SSH logins and summarizes the common uses of SSH." />
+<meta property="og:description" content="SSH is a network protocol for encrypted logins between computers.In 1995, the Finnish academic Tatu Ylonen designed the SSH protocol, which became a fundamental solution for Internet security. This article is my notes on configuring SSH logins and summarizes the common uses of SSH." />
+<link rel="canonical" href="http://localhost:4000/blog/note/2020-10-17-ssh-login/" />
+<meta property="og:url" content="http://localhost:4000/blog/note/2020-10-17-ssh-login/" />
+<meta property="og:site_name" content="IForester" />
+<meta property="og:image" content="http://localhost:4000/assets/img/blog/ssh%20login.jpg" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2020-10-17T00:00:00+08:00" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta property="twitter:image" content="http://localhost:4000/assets/img/blog/ssh%20login.jpg" />
+<meta property="twitter:title" content="The common usages of SSH login" />
+<script type="application/ld+json">
+{"description":"SSH is a network protocol for encrypted logins between computers.In 1995, the Finnish academic Tatu Ylonen designed the SSH protocol, which became a fundamental solution for Internet security. This article is my notes on configuring SSH logins and summarizes the common uses of SSH.","headline":"The common usages of SSH login","dateModified":"2020-10-20T15:59:03+08:00","datePublished":"2020-10-17T00:00:00+08:00","url":"http://localhost:4000/blog/note/2020-10-17-ssh-login/","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/blog/note/2020-10-17-ssh-login/"},"@type":"BlogPosting","image":"http://localhost:4000/assets/img/blog/ssh%20login.jpg","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"http://localhost:4000/assets/img/logo.png"},"name":"Jerry Chung"},"author":{"@type":"Person","name":"Jerry Chung"},"@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+  
+
+  
+    <meta name="keywords" content="blog,diary,note">
+  
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta http-equiv="x-ua-compatible" content="ie=edge">
+
+<meta name="mobile-web-app-capable" content="yes">
+
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="IForester">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+
+<meta name="application-name" content="IForester">
+
+
+  <meta name="theme-color" content="rgb(44,54,68)">
+
+
+<meta name="generator" content="Hydejack v9.0.4" />
+
+
+<link rel="alternate" href="http://localhost:4000/blog/note/2020-10-01-welcome-to-iforester/" hreflang="en-us">
+
+<link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="IForester" />
+
+
+<link rel="shortcut icon"    href="/assets/icons/favicon.ico">
+<link rel="apple-touch-icon" href="/assets/icons/icon-192x192.png">
+
+<link rel="manifest" href="/assets/site.webmanifest">
+
+
+  <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+  <link rel="dns-prefetch" href="https://fonts.gstatic.com">
+
+
+
+
+<link rel="preload" href="/assets/img/swipe.svg" as="image" id="_hrefSwipeSVG">
+
+
+
+
+
+
+<script>!function(e,t){"use strict";function n(e,t,n,o){e.addEventListener?e.addEventListener(t,n,o):e.attachEvent?e.attachEvent("on"+t,n):e["on"+t]=n}e.loadJS=function(e,o){var r=t.createElement("script");r.src=e,o&&n(r,"load",o,{once:!0});var a=t.scripts[0];return a.parentNode.insertBefore(r,a),r},e._loaded=!1,e.loadJSDeferred=function(o,r){function a(){e._loaded=!0,r&&n(c,"load",r,{once:!0});var o=t.scripts[0];o.parentNode.insertBefore(c,o)}var c=t.createElement("script");return c.src=o,e._loaded?a():n(e,"load",a,{once:!0}),c},e.setRel=e.setRelStylesheet=function(e){function o(){this.rel="stylesheet"}n(t.getElementById(e),"load",o,{once:!0})}}(window,document);
+!function(a){"use strict";var b=function(b,c,d){function e(a){return h.body?a():void setTimeout(function(){e(a)})}function f(){i.addEventListener&&i.removeEventListener("load",f),i.media=d||"all"}var g,h=a.document,i=h.createElement("link");if(c)g=c;else{var j=(h.body||h.getElementsByTagName("head")[0]).childNodes;g=j[j.length-1]}var k=h.styleSheets;i.rel="stylesheet",i.href=b,i.media="only x",e(function(){g.parentNode.insertBefore(i,c?g:g.nextSibling)});var l=function(a){for(var b=i.href,c=k.length;c--;)if(k[c].href===b)return a();setTimeout(function(){l(a)})};return i.addEventListener&&i.addEventListener("load",f),i.onloadcssdefined=l,l(f),i};"undefined"!=typeof exports?exports.loadCSS=b:a.loadCSS=b}("undefined"!=typeof global?global:this);
+!function(a){if(a.loadCSS){var b=loadCSS.relpreload={};if(b.support=function(){try{return a.document.createElement("link").relList.supports("preload")}catch(b){return!1}},b.poly=function(){for(var b=a.document.getElementsByTagName("link"),c=0;c<b.length;c++){var d=b[c];"preload"===d.rel&&"style"===d.getAttribute("as")&&(a.loadCSS(d.href,d,d.getAttribute("media")),d.rel=null)}},!b.support()){b.poly();var c=a.setInterval(b.poly,300);a.addEventListener&&a.addEventListener("load",function(){b.poly(),a.clearInterval(c)}),a.attachEvent&&a.attachEvent("onload",function(){a.clearInterval(c)})}}}(this);
+!function(w) {
+  w._baseURL = '/';
+  w._publicPath = '/assets/js/';
+  w._noPushState = false;
+  w._noDrawer = false;
+  w._noNavbar = false;
+  w._noToc = false;
+  w._noSearch = false;
+}(window);
+</script>
+
+
+<script async src="/assets/bower_components/MathJax/es5/tex-mml-chtml.js" id="_MathJax"></script>
+
+
+<!--[if gt IE 8]><!---->
+
+  
+
+
+
+
+<link rel="stylesheet" href="/assets/css/hydejack-9.0.4.css" id="_stylePreload">
+<link rel="stylesheet" href="/assets/icomoon/style.css" id="_iconsPreload">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab:700%7CNoto+Sans:400,400i,700,700i&display=swap" id="_fontsPreload">
+
+
+
+  <style id="_pageStyle">
+
+html{--accent-color: rgb(144,158,174);--accent-color-faded: rgba(144,158,174,0.5);--accent-color-darkened: #7a8b9e;--theme-color: rgb(44,54,68)}
+
+</style>
+
+
+<!--<![endif]-->
+
+
+<!--
+Code used for embedding Gumroad on the Hydejack Site. 
+Left here for reference, feel free to delete.
+-->
+<link rel="dns-prefetch" href="https://assets.gumroad.com">
+<script type="module">
+  let p;
+  const promisify = f => x => new Promise(r => f(x).addEventListener('load', r));
+  const loadJS = promisify(window.loadJS);
+  document.querySelector('hy-push-state').addEventListener('load', () => {
+    const io = new IntersectionObserver(async (entries) => {
+      if (entries.some(x => x.isIntersecting)) {
+        p = p || loadJS('https://gumroad.com/js/gumroad-embed.js');
+        await p;
+        if (!window.GumroadEmbed) {
+          await new Promise(function check1(res) {
+            if ('createGumroadEmbed' in window) res(window.createGumroadEmbed());
+            else setTimeout(() => check1(res), 200);
+          });
+        }
+        await new Promise(function check2(res) {
+          if ('GumroadEmbed' in window) res(GumroadEmbed.reload());
+          else setTimeout(() => check2(res), 200);
+        });
+      }
+    }, { rootMargin: '1440px' });
+    document.querySelectorAll('.gumroad-product-embed').forEach(el => io.observe(el));
+  });
+</script>
+<script type="module">
+  let p;
+  const promisify = f => x => new Promise(r => f(x).addEventListener('load', r));
+  const loadJS = promisify(window.loadJS);
+  document.querySelector('hy-push-state').addEventListener('load', () => {
+    const io = new IntersectionObserver(async (entries) => {
+      if (entries.some(x => x.isIntersecting)) {
+        p = p || loadJS('https://gumroad.com/js/gumroad.js');
+        await p;
+        if (!window.GumroadOverlay) {
+          await new Promise(function check(res) {
+            if ('createGumroadOverlay' in window) res(window.createGumroadOverlay());
+            else setTimeout(() => check(res), 200);
+          });
+        }
+      }
+    }, { rootMargin: '300px' });
+    document.querySelectorAll('.gumroad-button').forEach(el => io.observe(el));
+  });
+</script>
+
+
+</head>
+
+<body class="no-break-layout">
+  
+
+
+<hy-push-state
+  id="_pushState"
+  replace-selector="#_main"
+  link-selector="a[href]:not([href^='/assets/']):not(.external):not(.no-push-state)"
+  script-selector="script"
+  duration="500"
+  hashchange
+>
+  
+  <div id="_navbar" class="navbar fixed-top">
+  <div class="content">
+    <span class="sr-only">Jump to:</span>
+    <div class="nav-btn-bar">
+      <a id="_menu" class="nav-btn no-hover" href="#_drawer--opened">
+        <span class="sr-only">Navigation</span>
+        <span class="icon-menu"></span>
+      </a>
+      <div class="nav-span"></div>
+    </div>
+  </div>
+</div>
+<hr class="sr-only" hidden />
+
+  <main
+  id="_main"
+  class="content layout-post"
+  role="main"
+>
+  
+
+
+
+
+
+<article id="post-blog-note-ssh login" class="page post mb6" role="article">
+  <header>
+    <h1 class="post-title flip-project-title">
+      
+        The common usages of SSH login
+      
+    </h1>
+
+    <div class="post-date">
+      
+      <time datetime="2020-10-17T00:00:00+08:00">17 Oct 2020</time>
+      
+      
+      
+      
+      
+
+
+
+
+
+
+
+
+
+in <span>Blog</span> / <a href="/note/" class="flip-title">Note</a>
+
+      
+
+
+
+
+
+
+
+
+
+
+
+    </div>
+
+    
+    
+      
+        <div class="lead aspect-ratio sixteen-nine flip-project-img">
+          
+
+
+<img
+  
+    src="/assets/img/blog/ssh%20login.jpg"
+  
+  alt="The common usages of SSH login"
+  
+  
+  width="864"
+  height="486"
+  loading="lazy"
+/>
+
+        </div>
+      
+      
+    
+
+    
+
+
+
+  
+    <p class="note-sm" >
+      SSH is a network protocol for encrypted logins between computers.In 1995, the Finnish academic Tatu Ylonen designed the SSH protocol, which became a fundamental solution for Internet security. This article is my notes on configuring SSH logins and summarizes the common uses of SSH.
+
+    </p>
+  
+
+
+  </header>
+
+  
+    <p>There are roughly three ways to use SSH to log in to a remote Linux server: <strong>password</strong>, <strong>key</strong>, and <strong>certificate</strong>. This post will focus on how to use these three methods of SSH login to remote Linux and will not go through the SSH principles or the underlying protocols. Furthermore, this article only discusses Linux and macOS-based SSH usage. If you want to use ssh in windows, you need third-party software support.</p>
+
+<h3 id="1-password">1. Password</h3>
+
+<p>Assuming you want to log in to the remote server with a user name, you can reach it with a simple command.</p>
+
+<p>  <code class="language-plaintext highlighter-rouge">$ ssh user@host</code></p>
+
+<p>The default port for SSH is 22. if you are using another port, <em>e.g.</em> 233, add the parameter <em>p</em>.</p>
+
+<p>  <code class="language-plaintext highlighter-rouge">$ ssh user@host -p 233</code></p>
+
+<p>The first connection will prompt that the host’s authenticity cannot be confirmed. Only public key fingerprint is known, whether to continue the connection or not.</p>
+
+<blockquote>
+  <p>The authenticity of host can’t be established.</p>
+
+  <p>RSA key fingerprint is xxxxxx # 128-bit fingerprint MD5 value.</p>
+
+  <p>Are you sure you want to continue connecting (yes/no)?</p>
+</blockquote>
+
+<p>The remote server must publicize the public key fingerprints through a website or other method, and the user can compare them on their own to decide whether to connect.</p>
+
+<p>When the remote server’s public key is accepted, it is saved in <code class="language-plaintext highlighter-rouge">$HOME/.ssh/known_hosts</code> without warning the next time. If it is saved in <code class="language-plaintext highlighter-rouge">/etc/ssh/ssh_known_hosts</code>, it takes effect for all local users.</p>
+
+<h3 id="2-key">2. Key</h3>
+
+<p>The principle of key login is that the user stores his public key on the remote server. When logging in, the remote server sends a random string to the user, who encrypts it with his or her private key and sends it back. The remote server decrypts it with the pre-stored public key, and if successful, it proves that the user is trustworthy and directly allows the login, no longer requiring a password.</p>
+
+<p>To log in with key, you first need to check the file <code class="language-plaintext highlighter-rouge">/etc/ssh/sshd_config</code>, paying attention to following options.</p>
+
+<blockquote>
+  <p>RSAAuthentication yes</p>
+
+  <p>PubkeyAuthentication yes</p>
+
+  <p>AuthorizedKeysFile .ssh/authorized_keys</p>
+</blockquote>
+
+<p>Check the permissions of <code class="language-plaintext highlighter-rouge">$HOME</code>, <code class="language-plaintext highlighter-rouge">$HOME/.ssh/</code> and <code class="language-plaintext highlighter-rouge">authorized_keys</code> on the remote server; otherwise the key login will be denied.</p>
+
+<p>  <code class="language-plaintext highlighter-rouge"># chown user:group $HOME/.ssh/</code></p>
+
+<p>  <code class="language-plaintext highlighter-rouge">$ chmod 700 $HOME/.ssh/</code></p>
+
+<p>  <code class="language-plaintext highlighter-rouge">$ chmod 600 $HOME/.ssh/authorized_keys</code></p>
+
+<p>Now you can generate your own public key on local machine.</p>
+
+<p>  <code class="language-plaintext highlighter-rouge">$ ssh-keygen</code></p>
+
+<p>When generating, it will ask if the private key needs passphrase. When it is finished, <code class="language-plaintext highlighter-rouge">id_rsa</code> and <code class="language-plaintext highlighter-rouge">id_rsa.pub</code> are generated in the folder <code class="language-plaintext highlighter-rouge">$HOME/.ssh/</code>, the former for the private key and the latter for the public key.</p>
+
+<p>Transfer the <strong>public key</strong> to a remote server. Parameter <em>p</em> may be necessary：</p>
+
+<p>  <code class="language-plaintext highlighter-rouge">$ ssh-copy-id user@host -p 233</code></p>
+
+<p>or</p>
+
+<p>  <code class="language-plaintext highlighter-rouge">$ scp -p 233 $HOME/.ssh/id_rsa.pub user@host:$HOME/.ssh/id_rsa.pub</code></p>
+
+<p>Append the <strong>public key</strong> to the remote server authentication file:</p>
+
+<p>  <code class="language-plaintext highlighter-rouge">$ cat /home/id_rsa.pub &gt;&gt; ~/.ssh/authorized_keys</code></p>
+
+<p>Don’t forget to reload <code class="language-plaintext highlighter-rouge">sshd.service</code> to make it works.</p>
+
+<p>  <code class="language-plaintext highlighter-rouge"># systemctl restart sshd.service</code></p>
+
+<p>To make logging in easier, you can configure a quick login in local file <code class="language-plaintext highlighter-rouge">$HOME/.ssh/config</code>.</p>
+
+<blockquote>
+  <p>Host            # alias</p>
+
+  <p>HostName        # ip or domain of remote server</p>
+
+  <p>Port            # ssh port</p>
+
+  <p>User            # user name</p>
+
+  <p>IdentityFile    # $HOME/.ssh/id_rsa</p>
+</blockquote>
+
+<p>Then, you can log in using the alias in the configuration file.</p>
+
+<p>  <code class="language-plaintext highlighter-rouge">$ ssh host-alias</code></p>
+
+<h3 id="3-certificate">3. Certificate</h3>
+
+<p>With certificate login, user and server don’t need to know each other’s public key in advance, they only need to exchange their respective certificates to verify whether the certificate is trustworthy. And the certificate can set the validity period.</p>
+
+<p>The <strong>Certificate1 Authority (CA)</strong> issues <strong>server certificates</strong> for trusted servers and <strong>user certificates</strong> for trusted users.</p>
+
+<p><strong>YOU NEED A CA SERVER</strong>.</p>
+
+<h4 id="step-1">STEP 1</h4>
+
+<p>Generate a key for the CA to issue a user certificate. This will generates a pair of keys in <code class="language-plaintext highlighter-rouge">$HOME/.ssh</code>: <code class="language-plaintext highlighter-rouge">user_ca</code> and <code class="language-plaintext highlighter-rouge">user_ca.pub</code>.</p>
+
+<p>  <code class="language-plaintext highlighter-rouge">$ ssh-keygen -t rsa -b 4096 -f $HOME/.ssh/user_ca -C user_ca</code></p>
+
+<ul>
+  <li>-t rsa: RSA algorithm</li>
+  <li>-b 4096: key is 4096 bits</li>
+  <li>-f $HOME/.ssh/user_ca: location and file name of the key</li>
+  <li>-C user_ca: a note string of the key</li>
+</ul>
+
+<p>Generate a key for the CA to issue a server certificate. This will generates a pair of keys in <code class="language-plaintext highlighter-rouge">$HOME/.ssh</code>: <code class="language-plaintext highlighter-rouge">host_ca</code> and <code class="language-plaintext highlighter-rouge">host_ca.pub</code>.</p>
+
+<p>  <code class="language-plaintext highlighter-rouge">$ ssh-keygen -t rsa -b 4096 -f $HOME/.ssh/host_ca -C host_ca</code></p>
+
+<h4 id="step-2">STEP 2</h4>
+
+<p>CA issues server certificate</p>
+
+<p>  <code class="language-plaintext highlighter-rouge"># ssh-keygen -f /etc/ssh/ssh_host_rsa_key -b 4096 -t rsa</code></p>
+
+<p>The above command generates private key <code class="language-plaintext highlighter-rouge">ssh_host_rsa_key</code> and public key <code class="language-plaintext highlighter-rouge">ssh_host_rsa_key.pub</code> in <code class="language-plaintext highlighter-rouge">/etc/ssh</code>.</p>
+
+<p>CA then uses the key <code class="language-plaintext highlighter-rouge">host_ca</code> to issue the server certificate <code class="language-plaintext highlighter-rouge">ssh_host_rsa_key-cert.pub</code> for the public key <code class="language-plaintext highlighter-rouge">ssh_host_rsa_key.pub</code>.</p>
+
+<p>  <code class="language-plaintext highlighter-rouge">$ ssh-keygen -s host_ca -I host.example.com -h -n host.example.com -V +52w ssh_host_rsa_key.pub</code></p>
+
+<ul>
+  <li>-s: the key</li>
+  <li>-I: identity string as note</li>
+  <li>-h: specify the certificate is a server certificate, not a user certificate</li>
+  <li>-n host.example.com: the domain name of the server</li>
+  <li>-V +52w: the validity of the certificate, here it is 52 weeks (one year)</li>
+  <li>ssh_host_rsa_key.pub: server public key.</li>
+</ul>
+
+<p>Finally, check the permission</p>
+
+<p>  <code class="language-plaintext highlighter-rouge">$ chmod 600 ssh_host_rsa_key-cert.pub</code></p>
+
+<h4 id="step-3">STEP 3</h4>
+
+<p>In local machine:</p>
+
+<p>  <code class="language-plaintext highlighter-rouge">$ ssh-keygen -f /.ssh/user_key -b 4096 -t rsa</code></p>
+
+<p>The above command generates private key <code class="language-plaintext highlighter-rouge">user_key</code> and public key <code class="language-plaintext highlighter-rouge">user_key.pub</code> in <code class="language-plaintext highlighter-rouge">$HOME/.ssh</code>.</p>
+
+<p>Upload public key <code class="language-plaintext highlighter-rouge">user_key.pub</code> to CA, then CA uses the key <code class="language-plaintext highlighter-rouge">user_ca</code> to issue the server certificate <code class="language-plaintext highlighter-rouge">user_key-cert.pub</code> for the public key <code class="language-plaintext highlighter-rouge">user_key.pub</code>.</p>
+
+<p>  <code class="language-plaintext highlighter-rouge">$ ssh-keygen -s user_ca -I user@example.com -n user -V +1d user_key.pub</code></p>
+
+<ul>
+  <li>-s: the key</li>
+  <li>-I: identity string as note</li>
+  <li>-n user: user name</li>
+  <li>-V +1d: the validity period of the certificate, here is 1 day, to force users to apply for the certificate once a day to improve security. By default, the certificate is valid forever.</li>
+  <li>user_key.pub: the user’s public key.</li>
+</ul>
+
+<p>Finally, check the permission</p>
+
+<p>  <code class="language-plaintext highlighter-rouge">$ chmod 600 user_key-cert.pub</code></p>
+
+<h4 id="step-4">STEP 4</h4>
+
+<p>Send server certificate to remote server:</p>
+
+<p>  <code class="language-plaintext highlighter-rouge">$ scp $HOME/.ssh/ssh_host_rsa_key-cert.pub root@host.example.com:/etc/ssh/</code></p>
+
+<p>Modify <code class="language-plaintext highlighter-rouge">/etc/ssh/sshd_config</code>:</p>
+
+<p>  <code class="language-plaintext highlighter-rouge">HostCertificate /etc/ssh/ssh_host_rsa_key-cert.pub</code></p>
+
+<p>Reload sshd service:</p>
+
+<p>  <code class="language-plaintext highlighter-rouge"># systemctl restart sshd</code></p>
+
+<h4 id="step-5">STEP 5</h4>
+
+<p>Sent user public key to remote server:</p>
+
+<p>  <code class="language-plaintext highlighter-rouge">$ scp $HOME/.ssh/user_ca.pub root@host.example.com:/etc/ssh</code></p>
+
+<p>Modify <code class="language-plaintext highlighter-rouge">/etc/ssh/sshd_config</code>:</p>
+
+<p>  <code class="language-plaintext highlighter-rouge">TrustedUserCAKeys /etc/ssh/user_ca.pub</code></p>
+
+<p>Reload sshd service:</p>
+
+<p>  <code class="language-plaintext highlighter-rouge"># systemctl restart sshd</code></p>
+
+<h4 id="step-6">STEP 6</h4>
+
+<p>Send <code class="language-plaintext highlighter-rouge">user_key-cert.pub</code> from CA to local machine and keep it with <code class="language-plaintext highlighter-rouge">user_key</code> in the same folder.</p>
+
+<h4 id="step-7">STEP 7</h4>
+
+<p>Install CA public key to local machine. Modify the file <code class="language-plaintext highlighter-rouge">$HOME/.ssh.ssh_known_hosts</code> to apoend the content of <code class="language-plaintext highlighter-rouge">host_ca.pub</code>.</p>
+
+<p>Now you can login remote server with certificate.</p>
+
+<p>  <code class="language-plaintext highlighter-rouge">$ ssh -i $HOME/.ssh/user_key user@host.example.com</code></p>
+
+<h4 id="ps-how-to-revoke-certificate">P.S. How to revoke certificate</h4>
+
+<p>To revoke server certificate, delete the conetent of <code class="language-plaintext highlighter-rouge">@cert-authority</code> in the file <code class="language-plaintext highlighter-rouge">known_hosts</code>.</p>
+
+<p>To revoke user certificate, create a file <code class="language-plaintext highlighter-rouge">/etc/ssh/revoked_keys</code> in remote server and modify <code class="language-plaintext highlighter-rouge">sshd_config</code>.</p>
+
+<p>  <code class="language-plaintext highlighter-rouge">RevokedKeys /etc/ssh/revoked_keys</code></p>
+
+<p>The <code class="language-plaintext highlighter-rouge">revoked_keys</code> store user certificate that are no longer trusted.</p>
+
+<p>  <code class="language-plaintext highlighter-rouge">$ ssh-keygen -kf /etc/ssh/revoked_keys -z 1 $HOME/.ssh/user_key.pub</code></p>
+
+  
+</article>
+
+
+<hr class="dingbat related" />
+
+
+
+
+  
+     
+
+
+  <aside class="about related mt4 mb4" role="complementary">
+    
+    
+
+<div class="author mt4">
+  
+
+  
+    
+
+
+<img
+  
+    src="/assets/img/me.jpg"
+    
+    
+  
+  alt="Jerry Chung"
+  class="avatar"
+  
+  width="120"
+  height="120"
+  loading="lazy"
+/>
+
+  
+
+  
+  
+  <h2  class="page-title hr-bottom">
+    About
+  </h2>
+
+  <p><em>“Everybody has a forest of his own. Those lost have lost and those have met before will meet each other again.”</em>     <strong><em>― Haruki Murakami, Norwegian Wood</em></strong></p>
+
+
+  <div class="sidebar-social">
+    <span class="sr-only">Social:</span>
+<ul>
+  
+    
+      
+
+
+
+  
+
+  
+  
+  
+  
+
+  
+
+  
+
+  <li>
+    <a href="mailto:lik_chung@163.com" title="Email" class="no-mark-external">
+      <span class="icon-mail"></span>
+      <span class="sr-only">Email</span>
+    </a>
+  </li>
+
+
+    
+      
+
+
+
+  
+
+  
+  
+  
+  
+
+  
+
+  
+
+  <li>
+    <a href="https://iforester.me/feed.xml" title="RSS" class="no-mark-external">
+      <span class="icon-rss2"></span>
+      <span class="sr-only">RSS</span>
+    </a>
+  </li>
+
+
+    
+  
+</ul>
+
+  </div>
+</div>
+
+  </aside>
+
+
+  
+
+  
+  
+
+  
+    
+
+
+  <aside class="related mb4" role="complementary">  <h2 class="hr-bottom">Related Posts</h2>  <ul class="related-posts">                  <li class="h4">  <a href="/blog/note/2020-10-15-cmd-of-firewalld/" class="flip-title"><span>A short cmd memo of Firewalld on RHEL8/CentOS8</span></a>  <time class="faded fine" datetime="2020-10-15T00:00:00+08:00">15 Oct 2020</time></li>                        <li class="h4">  <a href="/blog/diary/2020-10-04-farewell-tsingtao/" class="flip-title"><span>再会，岛城</span></a>  <time class="faded fine" datetime="2020-10-04T00:00:00+08:00">04 Oct 2020</time></li>                        <li class="h4">  <a href="/blog/note/2020-10-01-welcome-to-iforester/" class="flip-title"><span>Hi, welcome to IForester</span></a>  <time class="faded fine" datetime="2020-10-01T00:00:00+08:00">01 Oct 2020</time></li>            </ul></aside>
+
+  
+
+  
+  
+
+  
+    
+
+  
+
+
+  
+<footer class="content" role="contentinfo">
+  <hr/>
+  
+    <p><small class="copyright">© 2020. All rights reserved.
+</small></p>
+  
+  
+    <p><small>Powered by <a class="external" href="https://hydejack.com/">Hydejack</a> v<span id="_version">9.0.4</span></small></p>
+  <hr class="sr-only"/>
+</footer>
+
+
+</main>
+
+  <hy-drawer
+  id="_drawer"
+  class=""
+  side="left"
+  threshold="10"
+  noscroll
+  
+>
+  <header id="_sidebar" class="sidebar" role="banner">
+    
+
+
+
+
+<div class="sidebar-bg sidebar-overlay" style="background-color:rgb(44,54,68);background-image:url(/assets/img/sidebar-bg.jpg)"></div>
+
+    <div class="sidebar-sticky">
+  <div class="sidebar-about">
+    
+      <a class="no-hover" href="/" tabindex="-1">
+        <img src="/assets/img/logo.png" class="avatar" alt="IForester" width="120" height="120" loading="lazy" />
+      </a>
+    
+    <a class="sidebar-title" href="/"><h2 class="h1">IForester</h2></a>
+    
+    
+      <p class="">
+        <em>right now &amp; right here</em>
+
+      </p>
+    
+  </div>
+
+  <nav class="sidebar-nav heading" role="navigation">
+    <span class="sr-only">Navigation:</span>
+<ul>
+  
+    
+      
+      <li>
+        <a
+          id="_drawer--opened"
+          href="/diary/"
+          class="sidebar-nav-item"
+          
+        >
+          Diary
+        </a>
+      </li>
+    
+      
+      <li>
+        <a
+          
+          href="/note/"
+          class="sidebar-nav-item"
+          
+        >
+          Note
+        </a>
+      </li>
+    
+      
+      <li>
+        <a
+          
+          href="/archive/"
+          class="sidebar-nav-item"
+          
+        >
+          Archive
+        </a>
+      </li>
+    
+      
+      <li>
+        <a
+          
+          href="/about/"
+          class="sidebar-nav-item"
+          
+        >
+          About
+        </a>
+      </li>
+    
+  
+</ul>
+
+  </nav>
+
+  
+  <div class="sidebar-social">
+    <span class="sr-only">Social:</span>
+<ul>
+  
+    
+      
+
+
+
+  
+
+  
+  
+  
+  
+
+  
+
+  
+
+  <li>
+    <a href="mailto:lik_chung@163.com" title="Email" class="no-mark-external">
+      <span class="icon-mail"></span>
+      <span class="sr-only">Email</span>
+    </a>
+  </li>
+
+
+    
+      
+
+
+
+  
+
+  
+  
+  
+  
+
+  
+
+  
+
+  <li>
+    <a href="https://iforester.me/feed.xml" title="RSS" class="no-mark-external">
+      <span class="icon-rss2"></span>
+      <span class="sr-only">RSS</span>
+    </a>
+  </li>
+
+
+    
+  
+</ul>
+
+  </div>
+</div>
+  </header>
+</hy-drawer>
+<hr class="sr-only" hidden />
+
+</hy-push-state>
+
+
+  <!--[if gt IE 10]><!---->
+  <script nomodule>!function(){var e=document.createElement("script");if(!("noModule"in e)&&"onbeforeload"in e){var t=!1;document.addEventListener("beforeload",function(n){if(n.target===e)t=!0;else if(!n.target.hasAttribute("nomodule")||!t)return;n.preventDefault()},!0),e.type="module",e.src=".",document.head.appendChild(e),e.remove()}}();
+</script>
+  <script src="/assets/js/hydejack-9.0.4.js" type="module"></script>
+  <script src="/assets/js/LEGACY-hydejack-9.0.4.js" nomodule defer></script>
+  
+
+  
+
+<!--<![endif]-->
+  <!--
+Code for integrating CloudFlare's email protection with Hydejack's single page app loading.
+-->
+<script>
+  document.getElementById('_pushState').addEventListener('hy-push-state-after', function (e) {
+    function e(e){
+      (console.error?console.error:console.log).call(console,e)
+    }
+
+    function t(e){
+      return l.innerHTML='<a href="'+e.replace(/"/g,"&quot;")+'"></a>',l.childNodes[0].getAttribute("href")
+    }
+
+    function r(e,t){
+      var r=e.substr(t,2);return parseInt(r,16)
+    }
+
+    function n(e,n){
+      for(var o="",c=r(e,n),a=n+2;a<e.length;a+=2){
+        var l=r(e,a)^c;
+        o+=String.fromCharCode(l)
+      }
+      return t(o)
+    }
+
+    var o="/cdn-cgi/l/email-protection#",
+        c=".__cf_email__",
+        a="data-cfemail",
+        l=document.createElement("div");
+
+    !function(){
+      for(var t=document.getElementsByTagName("a"),r=0;r<t.length;r++)
+        try{
+          var c=t[r],a=c.href.indexOf(o);
+          a>-1&&(c.href="mailto:"+n(c.href,a+o.length))
+        }catch(t){
+          e(t)
+        }
+    }(),
+    function(){
+      for(var t=document.querySelectorAll(c),r=0;r<t.length;r++)
+        try{
+          var o=t[r],l=n(o.getAttribute(a),0),i=document.createTextNode(l);
+          o.parentNode.replaceChild(i,o)
+        }catch(t){
+          e(t)
+        }
+    }()
+  });
+</script>
+
+
+
+
+
+<div hidden>
+  
+  <h2 class="sr-only">Templates (for web app):</h2>
+
+  <template id="_animation-template">
+  <div class="animation-main fixed-top">
+    <div class="content">
+      <div class="page"></div>
+    </div>
+  </div>
+</template>
+
+  <template id="_loading-template">
+  <div class="loading nav-btn fr">
+    <span class="sr-only">Loading…</span>
+    <span class="icon-cog"></span>
+  </div>
+</template>
+
+  <template id="_error-template">
+  <div class="page">
+    <h1 class="page-title">Error</h1>
+    
+    
+    <p class="lead">
+      Sorry, an error occurred while loading <a class="this-link" href=""></a>.
+
+    </p>
+  </div>
+</template>
+
+  <template id="_forward-template">
+  <button id="_forward" class="forward nav-btn no-hover">
+    <span class="sr-only">Forward</span>
+    <span class="icon-arrow-right2"></span>
+  </button>
+</template>
+
+  <template id="_back-template">
+  <button id="_back" class="back nav-btn no-hover">
+    <span class="sr-only">Back</span>
+    <span class="icon-arrow-left2"></span>
+  </button>
+</template>
+
+  <template id="_permalink-template">
+  <a href="#" class="permalink">
+    <span class="sr-only">Permalink</span>
+    <span class="content-hash"></span>
+  </a>
+</template>
+
+</div>
+
+
+</body>
+</html>
