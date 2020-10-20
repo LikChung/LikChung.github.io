@@ -6,6 +6,6 @@ This site is a personal blog of Jerry Chung where will serve as a diary and note
 
 The blog is powered by [Jekyll](https://jekyllrb.com/) and is based on the theme [Hydejack Free](https://hydejack.com/).
 
-Please give credits to the theme author [qwtel](https://github.com/qwtel) if you like his work.
+Please give precious credits to the theme author [qwtel](https://github.com/qwtel) if you like his work.
 
 ![my_blog](/assets/img/my_blog.jpg)
