@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en-us"><generator uri="https://jekyllrb.com/" version="4.1.1">Jekyll</generator><link href="https://iforester.me/feed.xml" rel="self" type="application/atom+xml" /><link href="https://iforester.me/" rel="alternate" type="text/html" hreflang="en-us" /><updated>2020-10-31T23:36:11+08:00</updated><id>https://iforester.me/feed.xml</id><title type="html">IForester</title><subtitle>A personal blog site by Jerry Chung.
-</subtitle><author><name>Jerry Chung</name><email>lik_chung@163.com</email></author><entry><title type="html">Days of Quarantine</title><link href="https://iforester.me/blog/diary/2020-10-29-days-of-quarantine/" rel="alternate" type="text/html" title="Days of Quarantine" /><published>2020-10-29T00:00:00+08:00</published><updated>2020-10-31T23:34:17+08:00</updated><id>https://iforester.me/blog/diary/days%20of%20quarantine</id><content type="html" xml:base="https://iforester.me/blog/diary/2020-10-29-days-of-quarantine/">&lt;h4 id=&quot;oct-30&quot;&gt;&lt;center&gt;Oct. 30&lt;/center&gt;&lt;/h4&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en-us"><generator uri="https://jekyllrb.com/" version="4.1.1">Jekyll</generator><link href="https://iforester.me/feed.xml" rel="self" type="application/atom+xml" /><link href="https://iforester.me/" rel="alternate" type="text/html" hreflang="en-us" /><updated>2020-11-01T22:22:40+08:00</updated><id>https://iforester.me/feed.xml</id><title type="html">IForester</title><subtitle>A personal blog site by Jerry Chung.
+</subtitle><author><name>Jerry Chung</name><email>lik_chung@163.com</email></author><entry><title type="html">Days of Quarantine</title><link href="https://iforester.me/blog/diary/2020-10-29-days-of-quarantine/" rel="alternate" type="text/html" title="Days of Quarantine" /><published>2020-10-29T00:00:00+08:00</published><updated>2020-11-01T22:17:49+08:00</updated><id>https://iforester.me/blog/diary/days%20of%20quarantine</id><content type="html" xml:base="https://iforester.me/blog/diary/2020-10-29-days-of-quarantine/">&lt;h4 id=&quot;oct-30&quot;&gt;&lt;center&gt;Oct. 30&lt;/center&gt;&lt;/h4&gt;
 
 &lt;p&gt;一日一餐运动的第一天。&lt;/p&gt;
 
@@ -27,7 +27,23 @@
 
 &lt;p&gt;傍晚看书前做了一次 R.A.I.N. 冥想。虽然不是处于特别剧烈的情绪中，仍能觉察冥想带来的安慰与平和。&lt;/p&gt;
 
-&lt;p&gt;今日无软糖，至傍晚点餐时，看着外卖广告单上的种种食物，不由狂咽口水，这一刻什么食物都仿佛稀世佳肴。&lt;/p&gt;</content><author><name>Jerry Chung</name><email>lik_chung@163.com</email></author><category term="blog" /><category term="diary" /><summary type="html">Oct. 30</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://iforester.me/assets/img/blog/days%20of%20quarantine.jpg" /><media:content medium="image" url="https://iforester.me/assets/img/blog/days%20of%20quarantine.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">The common usages of SSH login</title><link href="https://iforester.me/blog/note/2020-10-17-ssh-login/" rel="alternate" type="text/html" title="The common usages of SSH login" /><published>2020-10-17T00:00:00+08:00</published><updated>2020-10-20T15:59:03+08:00</updated><id>https://iforester.me/blog/note/ssh%20login</id><content type="html" xml:base="https://iforester.me/blog/note/2020-10-17-ssh-login/">&lt;p&gt;There are roughly three ways to use SSH to log in to a remote Linux server: &lt;strong&gt;password&lt;/strong&gt;, &lt;strong&gt;key&lt;/strong&gt;, and &lt;strong&gt;certificate&lt;/strong&gt;. This post will focus on how to use these three methods of SSH login to remote Linux and will not go through the SSH principles or the underlying protocols. Furthermore, this article only discusses Linux and macOS-based SSH usage. If you want to use ssh in windows, you need third-party software support.&lt;/p&gt;
+&lt;p&gt;今日无软糖，至傍晚点餐时，看着外卖广告单上的种种食物，不由狂咽口水，这一刻什么食物都仿佛稀世佳肴。&lt;/p&gt;
+
+&lt;h4 id=&quot;nov-1&quot;&gt;&lt;center&gt;Nov. 1&lt;/center&gt;&lt;/h4&gt;
+
+&lt;p&gt;我想我的身体基本适应一日一餐的进食频率了。&lt;/p&gt;
+
+&lt;p&gt;一整天下来直到饭点之前，从未感到饥饿。咖啡和茶倒是喝了不少。&lt;/p&gt;
+
+&lt;p&gt;关于右膝痛风，今日比昨天明显。恰好今天的 keep 是强度较大的运动，我决定暂停一次，推迟到明天。至于疼痛，看样子必须服药加以控制了。&lt;/p&gt;
+
+&lt;p&gt;昨夜万圣节，从新闻上看到很多市民上街化妆游行。出于控制疫情或者别的难言之隐，警方出动大堆人马，手牵手驱散人群，并竖起 「集会未经政府许可属非法行为」的警告。&lt;/p&gt;
+
+&lt;p&gt;果然，今天上午获悉，又新增 7 例确诊病例。&lt;/p&gt;
+
+&lt;p&gt;游行也好，禁止也罢。自由和死亡的命题，贯穿人类历史。对此我无能亦无兴趣回答。&lt;/p&gt;
+
+&lt;p&gt;今日仍要继续冥想。&lt;/p&gt;</content><author><name>Jerry Chung</name><email>lik_chung@163.com</email></author><category term="blog" /><category term="diary" /><summary type="html">Oct. 30</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://iforester.me/assets/img/blog/days%20of%20quarantine.jpg" /><media:content medium="image" url="https://iforester.me/assets/img/blog/days%20of%20quarantine.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">The common usages of SSH login</title><link href="https://iforester.me/blog/note/2020-10-17-ssh-login/" rel="alternate" type="text/html" title="The common usages of SSH login" /><published>2020-10-17T00:00:00+08:00</published><updated>2020-10-20T15:59:03+08:00</updated><id>https://iforester.me/blog/note/ssh%20login</id><content type="html" xml:base="https://iforester.me/blog/note/2020-10-17-ssh-login/">&lt;p&gt;There are roughly three ways to use SSH to log in to a remote Linux server: &lt;strong&gt;password&lt;/strong&gt;, &lt;strong&gt;key&lt;/strong&gt;, and &lt;strong&gt;certificate&lt;/strong&gt;. This post will focus on how to use these three methods of SSH login to remote Linux and will not go through the SSH principles or the underlying protocols. Furthermore, this article only discusses Linux and macOS-based SSH usage. If you want to use ssh in windows, you need third-party software support.&lt;/p&gt;
 
 &lt;h3 id=&quot;1-password&quot;&gt;1. Password&lt;/h3&gt;
 
