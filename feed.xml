@@ -1,5 +1,123 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en-us"><generator uri="https://jekyllrb.com/" version="4.1.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" hreflang="en-us" /><updated>2020-10-20T18:09:25+08:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">IForester</title><subtitle>A personal blog site by Jerry Chung.
-</subtitle><author><name>Jerry Chung</name><email>lik_chung@163.com</email></author><entry><title type="html">The common usages of SSH login</title><link href="http://localhost:4000/blog/note/2020-10-17-ssh-login/" rel="alternate" type="text/html" title="The common usages of SSH login" /><published>2020-10-17T00:00:00+08:00</published><updated>2020-10-20T15:59:03+08:00</updated><id>http://localhost:4000/blog/note/ssh%20login</id><content type="html" xml:base="http://localhost:4000/blog/note/2020-10-17-ssh-login/">&lt;p&gt;There are roughly three ways to use SSH to log in to a remote Linux server: &lt;strong&gt;password&lt;/strong&gt;, &lt;strong&gt;key&lt;/strong&gt;, and &lt;strong&gt;certificate&lt;/strong&gt;. This post will focus on how to use these three methods of SSH login to remote Linux and will not go through the SSH principles or the underlying protocols. Furthermore, this article only discusses Linux and macOS-based SSH usage. If you want to use ssh in windows, you need third-party software support.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en-us"><generator uri="https://jekyllrb.com/" version="4.1.1">Jekyll</generator><link href="https://iforester.me/feed.xml" rel="self" type="application/atom+xml" /><link href="https://iforester.me/" rel="alternate" type="text/html" hreflang="en-us" /><updated>2020-11-05T21:24:26+08:00</updated><id>https://iforester.me/feed.xml</id><title type="html">IForester</title><subtitle>A personal blog site by Jerry Chung.
+</subtitle><author><name>Jerry Chung</name><email>lik_chung@163.com</email></author><entry><title type="html">You hear me</title><link href="https://iforester.me/blog/diary/2020-11-03-you-hear-me/" rel="alternate" type="text/html" title="You hear me" /><published>2020-11-03T00:00:00+08:00</published><updated>2020-11-05T21:17:47+08:00</updated><id>https://iforester.me/blog/diary/you%20hear%20me</id><content type="html" xml:base="https://iforester.me/blog/diary/2020-11-03-you-hear-me/">&lt;p&gt;She told me she was focusing on the real-time result of the 2020 U.S. presidential election.&lt;/p&gt;
+
+&lt;p&gt;I said so did me and asked her who would possibly win by her prediction.&lt;/p&gt;
+
+&lt;p&gt;“Why shall I predict the outcome? I don’t even have a ballot.” She said.&lt;/p&gt;
+
+&lt;p&gt;“Then why do you watch real-time election? You don’t even have a ballot.”&lt;/p&gt;
+
+&lt;p&gt;Feeling annoyed by her inexplicable unfriendly tone, which happens now and then in our short-lasting relationships, I wanted to explore her real thinking and said those words as a prank.&lt;/p&gt;
+
+&lt;p&gt;“Why must I want one team to win to watch a football game?” She argued.&lt;/p&gt;
+
+&lt;p&gt;“For most people, they do.”&lt;/p&gt;
+
+&lt;p&gt;It was a contorted metaphor. I was also willing to go with her twisted context without clarification.&lt;/p&gt;
+
+&lt;p&gt;“So I don’t deserve to see it?” She said sarcastically.&lt;/p&gt;
+
+&lt;p&gt;“Ah, you sound angry.” I can imagine what her expression was behind the screen.&lt;/p&gt;
+
+&lt;p&gt;No more words came out.&lt;/p&gt;
+
+&lt;p&gt;Simply saying, “It doesn’t matter who wins, I just don’t care,” can defuse an uncomfortable argument. However, she is unable to speak that. The greatest tragedy between us is that she never care about the aggrssive attitude to others.&lt;/p&gt;
+
+&lt;p&gt;You can’t hear me.&lt;/p&gt;</content><author><name>Jerry Chung</name><email>lik_chung@163.com</email></author><category term="blog" /><category term="diary" /><summary type="html">She told me she was focusing on the real-time result of the 2020 U.S. presidential election.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://iforester.me/assets/img/blog/the%20last%20conversation.jpg" /><media:content medium="image" url="https://iforester.me/assets/img/blog/the%20last%20conversation.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">我在旺角幼稚园</title><link href="https://iforester.me/blog/diary/2020-10-29-days-in-quarantine/" rel="alternate" type="text/html" title="我在旺角幼稚园" /><published>2020-10-29T00:00:00+08:00</published><updated>2020-11-05T21:14:28+08:00</updated><id>https://iforester.me/blog/diary/days%20in%20quarantine</id><content type="html" xml:base="https://iforester.me/blog/diary/2020-10-29-days-in-quarantine/">&lt;p&gt;2020 年 10 月 29 日，从家乡乘 D3333 次动车前往深圳北站，转的士过深圳湾口岸入港，我将开始新的求学和科研生涯。&lt;/p&gt;
+
+&lt;p&gt;由于今年声势浩大的 COVID-19 疫情，外地人入港后需执行 14 天自我隔离。&lt;/p&gt;
+
+&lt;p&gt;这是一系列流水账式的日记，记录隔离这 14 天的生活。&lt;/p&gt;
+
+&lt;h4 id=&quot;oct-30&quot;&gt;&lt;center&gt;Oct. 30&lt;/center&gt;&lt;/h4&gt;
+
+&lt;p&gt;一日一餐运动的第一天。&lt;/p&gt;
+
+&lt;p&gt;十一点半开始产生空腹感，至十二点半有淡淡饥饿感，伴有些许眩晕，但情绪仍是振奋的。&lt;/p&gt;
+
+&lt;p&gt;我估计眩晕不全是血糖降低的缘故，可能与使用一上午电脑和手机有关，我想我应设置闹钟提醒自己时不时起身运动、看看远景。&lt;/p&gt;
+
+&lt;p&gt;十三点，客服送来一小袋软糖，和一张 Halloween 贺卡。好精致。&lt;/p&gt;
+
+&lt;p&gt;软糖无疑解决了燃眉之急，我决定下午以此充饥，维持血糖。&lt;/p&gt;
+
+&lt;p&gt;一日一餐是一件需要循序渐进的实验，有糖果助我度过第一日的过渡期，真是上天眷我。&lt;/p&gt;
+
+&lt;p&gt;今天开始做 keep 训练，时隔一年有余，身体比想象的僵硬得多，艰难完成后更想吃东西了。&lt;/p&gt;
+
+&lt;h4 id=&quot;oct-31&quot;&gt;&lt;center&gt;Oct. 31&lt;/center&gt;&lt;/h4&gt;
+
+&lt;p&gt;一日一餐运动第二天。&lt;/p&gt;
+
+&lt;p&gt;饥饿感比昨日弱得多，准确说直到下午五点尚无特别严重饥饿感。精神亦佳。&lt;/p&gt;
+
+&lt;p&gt;今日的 keep 训练以舒展和拉伸为主，并不辛苦。&lt;/p&gt;
+
+&lt;p&gt;也许昨日突然的体内血糖波动，略有引发痛风之势（因为缺乏专业知识，我不确定血糖与痛风是否存在必然联系，姑且以将近 10 年的病情经验总结）。右腿膝盖有些微疼痛，但在 Keep 之后感觉好多了。这些天我应该注意保暖。&lt;/p&gt;
+
+&lt;p&gt;傍晚看书前做了一次 R.A.I.N. 冥想。虽然不是处于特别剧烈的情绪中，还是能觉察冥想带来的安慰与平和。&lt;/p&gt;
+
+&lt;p&gt;今日无软糖，至傍晚点餐时，看着外卖广告单上的种种食物，不由狂咽口水，这一刻什么食物都不输满汉全席。&lt;/p&gt;
+
+&lt;h4 id=&quot;nov-1&quot;&gt;&lt;center&gt;Nov. 1&lt;/center&gt;&lt;/h4&gt;
+
+&lt;p&gt;我想我的身体基本适应一日一餐的进食频率了。&lt;/p&gt;
+
+&lt;p&gt;一整天下来直到饭点之前，从未感到饥饿。咖啡和茶倒是喝了不少。&lt;/p&gt;
+
+&lt;p&gt;关于右膝痛风，比昨天明显。恰好今天的 Keep 是强度较大的运动，我决定暂停一次，推迟到明天。至于疼痛，看样子必须服药加以控制了。&lt;/p&gt;
+
+&lt;p&gt;昨夜万圣节，从新闻上看到很多市民上街化妆游行。出于控制疫情或者别的难言之隐，警方出动大堆人马，手牵手驱散人群，并竖起 「集会未经政府许可属非法行为」的警告。&lt;/p&gt;
+
+&lt;p&gt;果然，今天上午获悉，又新增 7 例确诊病例。6 例境外输入，1 例陆客非法居留且带病。&lt;/p&gt;
+
+&lt;p&gt;陆客这一例，从报道上看，是位住在旺角某酒店的性工作者。在扫黄运动中被逮捕并检测出 COVID-19，牵连了 20 位有接触的警员和不知数量的嫖客。不知道她之后的命运会如何，我想起一部叫《算命》的纪录片，社会底层曲折的人生。&lt;/p&gt;
+
+&lt;p&gt;游行也好，禁止也罢。自由和死亡的命题，贯穿人类历史。对此我无能亦无兴趣回答。&lt;/p&gt;
+
+&lt;p&gt;今日仍要继续冥想。&lt;/p&gt;
+
+&lt;h4 id=&quot;nov-2&quot;&gt;&lt;center&gt;Nov. 2&lt;/center&gt;&lt;/h4&gt;
+
+&lt;p&gt;平凡又颇为充实的一天。&lt;/p&gt;
+
+&lt;p&gt;膝关节痛风完全退去，可见昨夜的药功效奇佳。家族有一位痛风严重的亲戚亦服此药，据说随病情恶化剂量渐增，到如今已经基本无效了。因此，我得出的结论是药物只能在必要时使用，无法根治痛风。规律的生活和强大的自制力才是长期与痛风共存乃至淡化它的根本方法。另外，也许我可以利用香港丰富的资源，寻找更好的药物以备不时。&lt;/p&gt;
+
+&lt;p&gt;得益于关节的良好状态，被推迟到今日的 Keep 虽然强度略高，还是顺利完成了。出了一身汗后，精神更好。我想起村上春树某一本小书——不知是《身为职业小说家》还是《当我跑步时我谈些什么》——有个有趣又深刻的比喻，说身体像一部精密的机器，需要耐心的养护和必要强度的运作，才能维持韧性。我到了这个年纪，越发理解其中的哲理。也许，是该重新读读这两本书。&lt;/p&gt;
+
+&lt;p&gt;晚饭吃了培根鸡肉焗意面，美味至极。附赠的奶茶口感也不错。唯独塑料叉子，用来吃意面十分不称手。&lt;/p&gt;
+
+&lt;h4 id=&quot;nov-3&quot;&gt;&lt;center&gt;Nov. 3&lt;/center&gt;&lt;/h4&gt;
+
+&lt;p&gt;自隔离以来一直点同一家快餐店的食物，到今天已经累计消费超过 180 HKD，老板按广告说的送我一份沙拉作为答谢。&lt;/p&gt;
+
+&lt;p&gt;倒不是贪图这点小优惠，更不是我这人恋旧到只吃同一锅饭。&lt;/p&gt;
+
+&lt;p&gt;我只是懒得每天都要为菜单绞尽脑汁——在加国每周六考虑下个整周做什么菜的身心俱疲我早有体会——索性按照第一张广告的每日精选套餐从头点到尾。在我看来，营养和热量都足够，还省了不少事儿，何况味道真的还不错。&lt;/p&gt;
+
+&lt;p&gt;这种生活态度，想必一定会让几位和我很亲密的朋友嗤之以鼻吧。过去围绕「精致生活」这一定义而起的争论，记忆中着实不少。&lt;/p&gt;
+
+&lt;p&gt;精致也好，粗糙也罢。眼下这是我一个人的生活，不必顾及他虑，我正乐在其中，足矣。&lt;/p&gt;
+
+&lt;p&gt;今天的 Keep 围绕腹肌，是消灭积攒一年腹部赘肉的大好运动啊。果不其然，完成得挺艰难。&lt;/p&gt;
+
+&lt;p&gt;傍晚，对门房间住进几位新客，清一色的学生样子的少男少女。我取餐的时候开门正好与之攀谈，大概是大陆来的学生，忙着隔离前自拍。噪音让我有点不太舒服。&lt;/p&gt;
+
+&lt;h4 id=&quot;nov-4&quot;&gt;&lt;center&gt;Nov. 4&lt;/center&gt;&lt;/h4&gt;
+
+&lt;p&gt;早上九点半至十二点半听了一堂 Geo-spatial information，虽然是通识类型的讲座，其应用部分颇为费脑。我觉得对 Geo-chemistry 做成分分布用处更大，那是我过去可能涉及的领域，如今我的课题更倾向于 health impact 的部分，其用处就有限了。&lt;/p&gt;
+
+&lt;p&gt;大概因为用脑，中午格外饥饿。算了算钱包剩余的现金，应该足够挺过剩余 9 天，我决定奢侈一回，点个午饭，19 HKD 的美式热狗，佐以速溶咖啡，味道不俗。&lt;/p&gt;
+
+&lt;p&gt;今天是美国总统大选开票的日子，我打开 live-update 浏览结果，Trump 目前似乎处于下风。美式午餐配着美式新闻，以及并不美式的我。&lt;/p&gt;
+
+&lt;p&gt;昨晚睡得不深，以至于下午没忍住睡了一个长长的午觉，醒来时已经四点半了。我看到窗外，楼下放学后空荡荡的幼儿园沐在金色的夕阳里，心底生出一股久违的温馨。&lt;/p&gt;
+
+&lt;p&gt;傍晚的 Keep 以全身拉伸舒展为主，特别轻松惬意。&lt;/p&gt;
+
+&lt;p&gt;但为什么，入夜以后，洗过澡坐在电脑前，我还是有点空虚呢？&lt;/p&gt;
+
+&lt;h4 id=&quot;nov-5&quot;&gt;&lt;center&gt;Nov. 5&lt;/center&gt;&lt;/h4&gt;</content><author><name>Jerry Chung</name><email>lik_chung@163.com</email></author><category term="blog" /><category term="diary" /><summary type="html">2020 年 10 月 29 日，从家乡乘 D3333 次动车前往深圳北站，转的士过深圳湾口岸入港，我将开始新的求学和科研生涯。</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://iforester.me/assets/img/blog/days%20in%20quarantine.jpg" /><media:content medium="image" url="https://iforester.me/assets/img/blog/days%20in%20quarantine.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">The common usages of SSH login</title><link href="https://iforester.me/blog/note/2020-10-17-ssh-login/" rel="alternate" type="text/html" title="The common usages of SSH login" /><published>2020-10-17T00:00:00+08:00</published><updated>2020-11-04T12:18:04+08:00</updated><id>https://iforester.me/blog/note/ssh%20login</id><content type="html" xml:base="https://iforester.me/blog/note/2020-10-17-ssh-login/">&lt;p&gt;There are roughly three ways to use SSH to log in to a remote Linux server: &lt;strong&gt;password&lt;/strong&gt;, &lt;strong&gt;key&lt;/strong&gt;, and &lt;strong&gt;certificate&lt;/strong&gt;. This post will focus on how to use these three methods of SSH login to remote Linux and will not go through the SSH principles or the underlying protocols. Furthermore, this article only discusses Linux and macOS-based SSH usage. If you want to use ssh in windows, you need third-party software support.&lt;/p&gt;
 
 &lt;h3 id=&quot;1-password&quot;&gt;1. Password&lt;/h3&gt;
 
@@ -91,7 +209,7 @@
 
 &lt;p&gt;With certificate login, user and server don’t need to know each other’s public key in advance, they only need to exchange their respective certificates to verify whether the certificate is trustworthy. And the certificate can set the validity period.&lt;/p&gt;
 
-&lt;p&gt;The &lt;strong&gt;Certificate1 Authority (CA)&lt;/strong&gt; issues &lt;strong&gt;server certificates&lt;/strong&gt; for trusted servers and &lt;strong&gt;user certificates&lt;/strong&gt; for trusted users.&lt;/p&gt;
+&lt;p&gt;The &lt;strong&gt;Certificate Authority (CA)&lt;/strong&gt; issues &lt;strong&gt;server certificates&lt;/strong&gt; for trusted servers and &lt;strong&gt;user certificates&lt;/strong&gt; for trusted users.&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;YOU NEED A CA SERVER&lt;/strong&gt;.&lt;/p&gt;
 
@@ -211,7 +329,7 @@
 
 &lt;p&gt;The &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;revoked_keys&lt;/code&gt; store user certificate that are no longer trusted.&lt;/p&gt;
 
-&lt;p&gt;  &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;$ ssh-keygen -kf /etc/ssh/revoked_keys -z 1 $HOME/.ssh/user_key.pub&lt;/code&gt;&lt;/p&gt;</content><author><name>Jerry Chung</name><email>lik_chung@163.com</email></author><category term="blog" /><category term="note" /><summary type="html">There are roughly three ways to use SSH to log in to a remote Linux server: password, key, and certificate. This post will focus on how to use these three methods of SSH login to remote Linux and will not go through the SSH principles or the underlying protocols. Furthermore, this article only discusses Linux and macOS-based SSH usage. If you want to use ssh in windows, you need third-party software support.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/img/blog/ssh%20login.jpg" /><media:content medium="image" url="http://localhost:4000/assets/img/blog/ssh%20login.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">A short cmd memo of Firewalld on RHEL8/CentOS8</title><link href="http://localhost:4000/blog/note/2020-10-15-cmd-of-firewalld/" rel="alternate" type="text/html" title="A short cmd memo of Firewalld on RHEL8/CentOS8" /><published>2020-10-15T00:00:00+08:00</published><updated>2020-10-20T01:06:05+08:00</updated><id>http://localhost:4000/blog/note/cmd%20of%20firewalld</id><content type="html" xml:base="http://localhost:4000/blog/note/2020-10-15-cmd-of-firewalld/">&lt;p&gt;Please note that &lt;strong&gt;root&lt;/strong&gt; or &lt;strong&gt;sudo&lt;/strong&gt; level privileges are required to conduct all commands below.&lt;/p&gt;
+&lt;p&gt;  &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;$ ssh-keygen -kf /etc/ssh/revoked_keys -z 1 $HOME/.ssh/user_key.pub&lt;/code&gt;&lt;/p&gt;</content><author><name>Jerry Chung</name><email>lik_chung@163.com</email></author><category term="blog" /><category term="note" /><summary type="html">There are roughly three ways to use SSH to log in to a remote Linux server: password, key, and certificate. This post will focus on how to use these three methods of SSH login to remote Linux and will not go through the SSH principles or the underlying protocols. Furthermore, this article only discusses Linux and macOS-based SSH usage. If you want to use ssh in windows, you need third-party software support.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://iforester.me/assets/img/blog/ssh%20login.jpg" /><media:content medium="image" url="https://iforester.me/assets/img/blog/ssh%20login.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">A short CMD memo of Firewalld on RHEL8/CentOS8</title><link href="https://iforester.me/blog/note/2020-10-15-cmd-of-firewalld/" rel="alternate" type="text/html" title="A short CMD memo of Firewalld on RHEL8/CentOS8" /><published>2020-10-15T00:00:00+08:00</published><updated>2020-10-18T22:03:17+08:00</updated><id>https://iforester.me/blog/note/cmd%20of%20firewalld</id><content type="html" xml:base="https://iforester.me/blog/note/2020-10-15-cmd-of-firewalld/">&lt;p&gt;Please note that &lt;strong&gt;root&lt;/strong&gt; or &lt;strong&gt;sudo&lt;/strong&gt; level privileges are required to conduct all commands below.&lt;/p&gt;
 
 &lt;h3 id=&quot;part-i-using-systemctl-to-simply-manage-firewalld&quot;&gt;PART I. Using systemctl to simply manage Firewalld&lt;/h3&gt;
 
@@ -412,7 +530,7 @@
 
     &lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;# firewall-cmd --query-port=8080/tcp&lt;/code&gt;&lt;/p&gt;
   &lt;/li&gt;
-&lt;/ul&gt;</content><author><name>Jerry Chung</name><email>lik_chung@163.com</email></author><category term="blog" /><category term="note" /><summary type="html">Please note that root or sudo level privileges are required to conduct all commands below.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/img/blog/cmd%20of%20firewalld.jpg" /><media:content medium="image" url="http://localhost:4000/assets/img/blog/cmd%20of%20firewalld.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">再会，岛城</title><link href="http://localhost:4000/blog/diary/2020-10-04-farewell-tsingtao/" rel="alternate" type="text/html" title="再会，岛城" /><published>2020-10-04T00:00:00+08:00</published><updated>2020-10-20T17:47:41+08:00</updated><id>http://localhost:4000/blog/diary/farewell%20tsingtao</id><content type="html" xml:base="http://localhost:4000/blog/diary/2020-10-04-farewell-tsingtao/">&lt;h4 id=&quot;1&quot;&gt;&lt;center&gt;1&lt;/center&gt;&lt;/h4&gt;
+&lt;/ul&gt;</content><author><name>Jerry Chung</name><email>lik_chung@163.com</email></author><category term="blog" /><category term="note" /><summary type="html">Please note that root or sudo level privileges are required to conduct all commands below.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://iforester.me/assets/img/blog/cmd%20of%20firewalld.jpg" /><media:content medium="image" url="https://iforester.me/assets/img/blog/cmd%20of%20firewalld.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">再会，岛城</title><link href="https://iforester.me/blog/diary/2020-10-04-farewell-tsingtao/" rel="alternate" type="text/html" title="再会，岛城" /><published>2020-10-04T00:00:00+08:00</published><updated>2020-11-05T21:19:00+08:00</updated><id>https://iforester.me/blog/diary/farewell%20tsingtao</id><content type="html" xml:base="https://iforester.me/blog/diary/2020-10-04-farewell-tsingtao/">&lt;h4 id=&quot;1&quot;&gt;&lt;center&gt;1&lt;/center&gt;&lt;/h4&gt;
 
 &lt;p&gt;凌晨四点四十，洗漱并收拾好行李，把剩下的半杯温水喝干，背上行囊，抽出房卡，掩上房门。&lt;/p&gt;
 
@@ -460,7 +578,7 @@
 
 &lt;h4 id=&quot;4&quot;&gt;&lt;center&gt;4&lt;/center&gt;&lt;/h4&gt;
 
-&lt;p&gt;六点的流亭机场，赶早班飞机的乘客比想象中多。熙来人往的大厅里，有人结伴而行，有人独自动身，有人神色匆忙，有人泰然自处，更多人面无表情，世界本来就有无尽的不同姿态。人群中的我身边没有陪同者，我拥有的仅仅一个相伴三年的背包，但不意味着我始终孤单。我曾有过美好的回忆，此刻亦拥有挂念之人，也许他们同样也在某一刻思念着我。想到如此，不禁如释重负，我低头对挪不动的双腿默默说，走吧，走吧。&lt;/p&gt;</content><author><name>Jerry Chung</name><email>lik_chung@163.com</email></author><category term="blog" /><category term="diary" /><summary type="html">1</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/img/blog/farewell%20tsingtao.jpg" /><media:content medium="image" url="http://localhost:4000/assets/img/blog/farewell%20tsingtao.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Hi, welcome to IForester</title><link href="http://localhost:4000/blog/note/2020-10-01-welcome-to-iforester/" rel="alternate" type="text/html" title="Hi, welcome to IForester" /><published>2020-10-01T00:00:00+08:00</published><updated>2020-10-20T01:07:47+08:00</updated><id>http://localhost:4000/blog/note/welcome%20to%20iforester</id><content type="html" xml:base="http://localhost:4000/blog/note/2020-10-01-welcome-to-iforester/">&lt;p&gt;&lt;strong&gt;&lt;a href=&quot;https://iforester.me/&quot;&gt;IForester&lt;/a&gt;&lt;/strong&gt; is a personal blog built by Jerry Chung on Oct 1, 2020.&lt;/p&gt;
+&lt;p&gt;六点的流亭机场，赶早班飞机的乘客比想象中多。熙来人往的大厅里，有人结伴而行，有人独自动身，有人神色匆忙，有人泰然自处，更多人面无表情，世界本来就有无尽的不同姿态。人群中的我身边没有陪同者，我拥有的仅仅一个相伴三年的背包，但不意味着我始终孤单。我曾有过美好的回忆，此刻亦拥有挂念之人，也许他们同样也在某一刻思念着我。想到如此，不禁如释重负，我低头对挪不动的双腿默默说，走吧，走吧。&lt;/p&gt;</content><author><name>Jerry Chung</name><email>lik_chung@163.com</email></author><category term="blog" /><category term="diary" /><summary type="html">1</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://iforester.me/assets/img/blog/farewell%20tsingtao.jpg" /><media:content medium="image" url="https://iforester.me/assets/img/blog/farewell%20tsingtao.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Hi, welcome to IForester</title><link href="https://iforester.me/blog/note/2020-10-01-welcome-to-iforester/" rel="alternate" type="text/html" title="Hi, welcome to IForester" /><published>2020-10-01T00:00:00+08:00</published><updated>2020-10-20T01:07:47+08:00</updated><id>https://iforester.me/blog/note/welcome%20to%20iforester</id><content type="html" xml:base="https://iforester.me/blog/note/2020-10-01-welcome-to-iforester/">&lt;p&gt;&lt;strong&gt;&lt;a href=&quot;https://iforester.me/&quot;&gt;IForester&lt;/a&gt;&lt;/strong&gt; is a personal blog built by Jerry Chung on Oct 1, 2020.&lt;/p&gt;
 
 &lt;p&gt;This site aims to keeping a diary and taking notes in the long term.&lt;/p&gt;
 
