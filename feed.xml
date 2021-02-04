@@ -1,5 +1,106 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en-us"><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="https://iforester.me/feed.xml" rel="self" type="application/atom+xml" /><link href="https://iforester.me/" rel="alternate" type="text/html" hreflang="en-us" /><updated>2021-01-24T20:40:30+08:00</updated><id>https://iforester.me/feed.xml</id><title type="html">IForester</title><subtitle>A personal blog site by Jerry Chung.
-</subtitle><author><name>Jerry Chung</name><email>lik_chung@163.com</email></author><entry><title type="html">琐记</title><link href="https://iforester.me/blog/diary/2021-01-24-trivia/" rel="alternate" type="text/html" title="琐记" /><published>2021-01-24T00:00:00+08:00</published><updated>2021-01-24T20:40:03+08:00</updated><id>https://iforester.me/blog/diary/trivia</id><content type="html" xml:base="https://iforester.me/blog/diary/2021-01-24-trivia/">&lt;p&gt;好久没有更新日志，都忘了上次写东西是什么时候。应该过了蛮久了吧，你们好吗？&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en-us"><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="https://iforester.me/feed.xml" rel="self" type="application/atom+xml" /><link href="https://iforester.me/" rel="alternate" type="text/html" hreflang="en-us" /><updated>2021-02-04T13:52:00+08:00</updated><id>https://iforester.me/feed.xml</id><title type="html">IForester</title><subtitle>A personal blog site by Jerry Chung.
+</subtitle><author><name>Jerry Chung</name><email>lik_chung@163.com</email></author><entry><title type="html">Mac 重置 SMC、NVRAM、PRAM 方法教程 - 解决 macOS 卡顿或无法启动</title><link href="https://iforester.me/blog/note/2021-02-04-%E8%8B%B9%E6%9E%9C-Mac-%E9%87%8D%E7%BD%AE-SMC-NVRAM-PRAM-%E6%96%B9%E6%B3%95%E6%95%99%E7%A8%8B-%E8%A7%A3%E5%86%B3-macOS-%E5%8D%A1%E9%A1%BF%E6%88%96%E6%97%A0%E6%B3%95%E5%90%AF%E5%8A%A8/" rel="alternate" type="text/html" title="Mac 重置 SMC、NVRAM、PRAM 方法教程 - 解决 macOS 卡顿或无法启动" /><published>2021-02-04T00:00:00+08:00</published><updated>2021-02-04T13:43:12+08:00</updated><id>https://iforester.me/blog/note/%E8%8B%B9%E6%9E%9C%20Mac%20%E9%87%8D%E7%BD%AE%20SMC%E3%80%81NVRAM%E3%80%81PRAM%20%E6%96%B9%E6%B3%95%E6%95%99%E7%A8%8B%20-%20%E8%A7%A3%E5%86%B3%20macOS%20%E5%8D%A1%E9%A1%BF%E6%88%96%E6%97%A0%E6%B3%95%E5%90%AF%E5%8A%A8</id><content type="html" xml:base="https://iforester.me/blog/note/2021-02-04-%E8%8B%B9%E6%9E%9C-Mac-%E9%87%8D%E7%BD%AE-SMC-NVRAM-PRAM-%E6%96%B9%E6%B3%95%E6%95%99%E7%A8%8B-%E8%A7%A3%E5%86%B3-macOS-%E5%8D%A1%E9%A1%BF%E6%88%96%E6%97%A0%E6%B3%95%E5%90%AF%E5%8A%A8/">&lt;p&gt;使用苹果 Mac 或 MacBook 电脑的过程中，经常会遇到各种各样的问题和疑难杂症，比如系统卡顿、无法启动等。如果联系苹果客服技术支持，很多时候他们都会引导你首先尝试&lt;strong&gt;重置 SMC&lt;/strong&gt;、&lt;strong&gt;重置 NVRAM 和 PRAM&lt;/strong&gt; 等措施。&lt;/p&gt;
+
+&lt;p&gt;很多疑难杂症在经过&lt;strong&gt;重置 SMC、NVRAM、PRAM&lt;/strong&gt; 之后都神奇地解决了。所以如果你的 Mac 也遇到了一些奇奇怪怪的问题，不妨自行尝试重置一下，有时真的会有奇效。注意：&lt;strong&gt;本文仅适合搭载 Intel 处理器的 Mac 电脑&lt;/strong&gt;，配备 M1 芯片的 Mac 并不适用。&lt;/p&gt;
+
+&lt;h2 id=&quot;mac-重置-smc-方法教程&quot;&gt;Mac 重置 SMC 方法教程&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;SMC&lt;/strong&gt; 系统管理控制器，重置系统管理控制器 (SMC) 可以解决某些与电源、电池和其他功能相关的问题。包括比如电源按钮、USB 端口的电源；电池和充电；风扇和其他热能管理功能；指示灯或感应器，例如状态指示灯（睡眠状态、电池充电状态等）、突发移动感应器、环境光传感器和键盘背光；打开和合上笔记本电脑盖时的行为等等……&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;检查你的 Mac 是否配备 T2 芯片：
+点击左上角菜单的 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;/code&gt; →“关于本机”→“系统报告”→“控制器”中就能看到你的 Mac 是否配备 Apple T2 芯片了。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&quot;配备-t2-芯片的-mac-重置-smc-方法教程&quot;&gt;配备 T2 芯片的 Mac 重置 SMC 方法教程：&lt;/h3&gt;
+&lt;h4 id=&quot;配备-t2-芯片的笔记本电脑的重置方法-macbook等&quot;&gt;配备 T2 芯片的笔记本电脑的重置方法 (Macbook等)：&lt;/h4&gt;
+
+&lt;p&gt;重置 SMC 之前，请尝试以下步骤：&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;将 Mac 关机。&lt;/li&gt;
+  &lt;li&gt;按住电源按钮 10 秒钟，然后松开这个按钮。&lt;/li&gt;
+  &lt;li&gt;等待几秒钟，然后按下电源按钮以将 Mac 开机。&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;如果问题仍然存在，请按照以下步骤重置 SMC：&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;将 Mac 关机。&lt;/li&gt;
+  &lt;li&gt;在内建键盘上，同时按住左侧的 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Control&lt;/code&gt; + &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Option&lt;/code&gt; (Alt) +&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Shift&lt;/code&gt;。Mac 可能会开机&lt;/li&gt;
+  &lt;li&gt;按住全部三个按键 7 秒钟，然后在不松开按键的情况下按住电源按钮。如果 Mac 处于开机状态，它将在您按住这些按键时关机。&lt;/li&gt;
+  &lt;li&gt;继续按住全部四个按键 7 秒钟，然后松开这些按键。&lt;/li&gt;
+  &lt;li&gt;等待几秒钟，然后按下电源按钮以将 Mac 开机。&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://img.iplaysoft.com/wp-content/uploads/2021/p/mac-reset-smc-nvram-pram/kb1.png!0x0.webp&quot; alt=&quot;重置 SMC 按键&quot; /&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;配备-t2-芯片的台式电脑-imac--mac-mini--mac-pro-等&quot;&gt;配备 T2 芯片的台式电脑 (iMac / Mac Mini / Mac Pro 等)&lt;/h4&gt;
+&lt;ol&gt;
+  &lt;li&gt;将 Mac 关机，然后拔下电源线。&lt;/li&gt;
+  &lt;li&gt;等待 15 秒钟，然后重新接回电源线。&lt;/li&gt;
+  &lt;li&gt;等待 5 秒钟，然后按下电源按钮以将 Mac 开机。&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&quot;其他-mac-上重置-smc-方法教程-无-t2-芯片&quot;&gt;其他 Mac 上重置 SMC 方法教程 (无 T2 芯片)：&lt;/h3&gt;
+&lt;p&gt;如果您的 Mac 没有配备 Apple T2 安全芯片，请按照以下步骤操作。&lt;/p&gt;
+
+&lt;h4 id=&quot;装有不可拆卸电池的笔记本电脑-macbook&quot;&gt;装有不可拆卸电池的笔记本电脑 (Macbook)&lt;/h4&gt;
+&lt;p&gt;这类电脑包括 2009 年中至 2017 年推出的 MacBook Pro 机型、2017 年或之前推出的 MacBook Air 机型，以及所有 MacBook 机型，但 MacBook（13 英寸，2009 年中）除外。&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;将 Mac 关机。&lt;/li&gt;
+  &lt;li&gt;在内建键盘上，同时按住键盘左侧的 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Shift&lt;/code&gt; + &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Control&lt;/code&gt; + &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Option&lt;/code&gt; (Alt)&lt;/li&gt;
+  &lt;li&gt;在按住全部三个按键的情况下，按住电源按钮。&lt;/li&gt;
+  &lt;li&gt;全部 4 个按键已被按下的笔记本电脑键盘&lt;/li&gt;
+  &lt;li&gt;按住全部四个按键 10 秒钟。&lt;/li&gt;
+  &lt;li&gt;松开所有按键，然后按下电源按钮以将 Mac 开机。&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://img.iplaysoft.com/wp-content/uploads/2021/p/mac-reset-smc-nvram-pram/kb2.png!0x0.webp&quot; alt=&quot;重置 SMC 方法&quot; /&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;装有可拆卸电池的笔记本电脑-早期型号&quot;&gt;装有可拆卸电池的笔记本电脑 (早期型号)&lt;/h4&gt;
+&lt;p&gt;这类电脑包括 2009 年初或之前推出的所有 MacBook Pro 和 MacBook 机型，以及 MacBook（13 英寸，2009 年中）。&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;将 Mac 关机。&lt;/li&gt;
+  &lt;li&gt;拆下电池。&lt;/li&gt;
+  &lt;li&gt;按住电源按钮 5 秒钟。&lt;/li&gt;
+  &lt;li&gt;重新安装电池。&lt;/li&gt;
+  &lt;li&gt;按下电源按钮以将 Mac 开机。&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h4 id=&quot;台式电脑-imac--mac-pro--mac-mini-等&quot;&gt;台式电脑 (iMac / Mac Pro / Mac Mini 等)&lt;/h4&gt;
+&lt;ol&gt;
+  &lt;li&gt;将 Mac 关机，然后拔下电源线。&lt;/li&gt;
+  &lt;li&gt;等待 15 秒钟，然后重新接回电源线。&lt;/li&gt;
+  &lt;li&gt;等待 5 秒钟，然后按下电源按钮以将 Mac 开机。&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;重置-mac-上的-nvram-或-pram-方法教程&quot;&gt;重置 Mac 上的 NVRAM 或 PRAM 方法教程&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;NVRAM&lt;/strong&gt;（非易失性随机访问存储器）是一小部分内存，Mac 使用这些内存来储存某些设置。同样，PRAM（参数 RAM）也储存着类似的信息，且 &lt;strong&gt;NVRAM 和 PRAM 的重置步骤完全相同&lt;/strong&gt;。&lt;/p&gt;
+
+&lt;p&gt;重置 NVRAM / PRAM 可以解决一些设置问题，包括音量、显示屏分辨率、启动磁盘选择、时区，以及最近的内核崩溃信息；或者&lt;strong&gt;解决 Mac 系统无法启动的问题&lt;/strong&gt;。&lt;/p&gt;
+
+&lt;h3 id=&quot;怎样重置-mac-的-nvram-和-pram&quot;&gt;怎样重置 Mac 的 NVRAM 和 PRAM&lt;/h3&gt;
+&lt;ol&gt;
+  &lt;li&gt;将 Mac 关机&lt;/li&gt;
+  &lt;li&gt;然后开机并立即同时按住以下四个按键：&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Option&lt;/code&gt; + &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Command&lt;/code&gt; + &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;P&lt;/code&gt; + &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;R&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;您可以在大约 20 秒后松开这些按键，在此期间您的 Mac 可能看似在重新启动。&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;如果 Mac 电脑发出启动声，您可以在第二次启动声过后松开这些按键。&lt;/li&gt;
+  &lt;li&gt;在搭载 Apple T2 安全芯片的 Mac 电脑上，您可以在 Apple 标志第二次出现并消失后松开这些按键。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;注意：如果您的 Mac 使用了&lt;a href=&quot;https://support.apple.com/zh-cn/HT204455&quot;&gt;固件密码&lt;/a&gt;，这个组合键将不起任何作用或导致您的 Mac 从 macOS 恢复功能启动。要重置 NVRAM，请先关闭固件密码。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;如果你重置了 NVRAM 和 PRAM，在您的 Mac 启动后，您可能需要打开“系统偏好设置”并调整已重置的任何设置，例如音量、显示屏分辨率、启动磁盘选择或时区。&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;如果您使用的是 Mac 台式电脑而非笔记本电脑，并且每次关闭 Mac 并断开 Mac 电源时，音量或时区等设置均会重置，则您可能需要更换 Mac 中的电池。这个小电池位于电脑的主板上，用于在断开 Mac 电源连接时帮助 NVRAM 保存设置。您可以携 Mac 前往 Apple 服务提供商处来更换该电池。&lt;/li&gt;
+  &lt;li&gt;如果遇到了与睡眠、唤醒、电源、为 Mac 笔记本电脑电池充电有关的问题或其他与电源相关的症状，您可能需要根据本文前面的方法重置 SMC（系统管理控制器）。&lt;/li&gt;
+&lt;/ul&gt;</content><author><name>Jerry Chung</name><email>lik_chung@163.com</email></author><category term="blog" /><category term="note" /><summary type="html">使用苹果 Mac 或 MacBook 电脑的过程中，经常会遇到各种各样的问题和疑难杂症，比如系统卡顿、无法启动等。如果联系苹果客服技术支持，很多时候他们都会引导你首先尝试重置 SMC、重置 NVRAM 和 PRAM 等措施。</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://iforester.me/assets/img/blog/reset%20macos.jpg" /><media:content medium="image" url="https://iforester.me/assets/img/blog/reset%20macos.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">琐记</title><link href="https://iforester.me/blog/diary/2021-01-24-trivia/" rel="alternate" type="text/html" title="琐记" /><published>2021-01-24T00:00:00+08:00</published><updated>2021-01-24T20:40:03+08:00</updated><id>https://iforester.me/blog/diary/trivia</id><content type="html" xml:base="https://iforester.me/blog/diary/2021-01-24-trivia/">&lt;p&gt;好久没有更新日志，都忘了上次写东西是什么时候。应该过了蛮久了吧，你们好吗？&lt;/p&gt;
 
 &lt;p&gt;我过得不算好，但还不至于崩溃。总想着说些什么，也总想着写出完美的动听的语言。然而，一旦沾染上「完美主义」倾向，对我而言就是无止尽的拖延。&lt;/p&gt;
 
