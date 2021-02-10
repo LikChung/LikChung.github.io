@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en-us"><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="https://iforester.me/feed.xml" rel="self" type="application/atom+xml" /><link href="https://iforester.me/" rel="alternate" type="text/html" hreflang="en-us" /><updated>2021-02-10T18:57:17+08:00</updated><id>https://iforester.me/feed.xml</id><title type="html">IForester</title><subtitle>A personal blog site by Jerry Chung.
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en-us"><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="https://iforester.me/feed.xml" rel="self" type="application/atom+xml" /><link href="https://iforester.me/" rel="alternate" type="text/html" hreflang="en-us" /><updated>2021-02-10T19:45:45+08:00</updated><id>https://iforester.me/feed.xml</id><title type="html">IForester</title><subtitle>A personal blog site by Jerry Chung.
 </subtitle><author><name>Jerry Chung</name><email>lik_chung@163.com</email></author><entry><title type="html">Mac 重置 SMC、NVRAM、PRAM 方法</title><link href="https://iforester.me/blog/note/2021-02-04-Reset-MacOS/" rel="alternate" type="text/html" title="Mac 重置 SMC、NVRAM、PRAM 方法" /><published>2021-02-04T00:00:00+08:00</published><updated>2021-02-04T00:00:00+08:00</updated><id>https://iforester.me/blog/note/Reset%20MacOS</id><content type="html" xml:base="https://iforester.me/blog/note/2021-02-04-Reset-MacOS/">&lt;p&gt;使用苹果 Mac 或 MacBook 电脑的过程中，经常会遇到各种各样的问题和疑难杂症，比如系统卡顿、无法启动等。如果联系苹果客服技术支持，很多时候他们都会引导你首先尝试&lt;strong&gt;重置 SMC&lt;/strong&gt;、&lt;strong&gt;重置 NVRAM 和 PRAM&lt;/strong&gt; 等措施。&lt;/p&gt;
 
 &lt;p&gt;很多疑难杂症在经过&lt;strong&gt;重置 SMC、NVRAM、PRAM&lt;/strong&gt; 之后都神奇地解决了。所以如果你的 Mac 也遇到了一些奇奇怪怪的问题，不妨自行尝试重置一下，有时真的会有奇效。注意：&lt;strong&gt;本文仅适合搭载 Intel 处理器的 Mac 电脑&lt;/strong&gt;，配备 M1 芯片的 Mac 并不适用。&lt;/p&gt;
@@ -124,31 +124,31 @@
 
 &lt;p&gt;Hey, won’t you kill me? my black puppy.&lt;/p&gt;
 
-&lt;p&gt;I will keep my eyes on you and live with you, forever probably.&lt;/p&gt;</content><author><name>Jerry Chung</name><email>lik_chung@163.com</email></author><category term="blog" /><category term="diary" /><summary type="html">好久没有更新日志，都忘了上次写东西是什么时候。应该过了蛮久了吧，你们好吗？</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://iforester.me/assets/img/blog/trivia.jpg" /><media:content medium="image" url="https://iforester.me/assets/img/blog/trivia.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">You hear me</title><link href="https://iforester.me/blog/diary/2020-11-03-you-hear-me/" rel="alternate" type="text/html" title="You hear me" /><published>2020-11-03T00:00:00+08:00</published><updated>2020-11-03T00:00:00+08:00</updated><id>https://iforester.me/blog/diary/you%20hear%20me</id><content type="html" xml:base="https://iforester.me/blog/diary/2020-11-03-you-hear-me/">&lt;p&gt;She told me she was focusing on the real-time result of the 2020 U.S. presidential election.&lt;/p&gt;
+&lt;p&gt;I will keep my eyes on you and live with you, forever probably.&lt;/p&gt;</content><author><name>Jerry Chung</name><email>lik_chung@163.com</email></author><category term="blog" /><category term="diary" /><summary type="html">好久没有更新日志，都忘了上次写东西是什么时候。应该过了蛮久了吧，你们好吗？</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://iforester.me/assets/img/blog/trivia.jpg" /><media:content medium="image" url="https://iforester.me/assets/img/blog/trivia.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Only you can hear</title><link href="https://iforester.me/blog/diary/2020-11-03-only-you-can-hear/" rel="alternate" type="text/html" title="Only you can hear" /><published>2020-11-03T00:00:00+08:00</published><updated>2021-02-10T19:44:47+08:00</updated><id>https://iforester.me/blog/diary/only%20you%20can%20hear</id><content type="html" xml:base="https://iforester.me/blog/diary/2020-11-03-only-you-can-hear/">&lt;p&gt;She told me she was following the real-time result of the 2020 U.S. presidential election.&lt;/p&gt;
 
-&lt;p&gt;I said so did me and asked her who would possibly win by her prediction.&lt;/p&gt;
+&lt;p&gt;I said so did me and asked her who would probably win in her prediction.&lt;/p&gt;
 
-&lt;p&gt;“Why shall I predict the outcome? I don’t even have a ballot.” She said.&lt;/p&gt;
+&lt;p&gt;“Why shall I predict the outcomes? I don’t even have a ballot.” She said.&lt;/p&gt;
 
-&lt;p&gt;“Then why do you watch real-time election? You don’t even have a ballot.”&lt;/p&gt;
+&lt;p&gt;“Then why do you watch real-time updates? You don’t even have a ballot.”&lt;/p&gt;
 
-&lt;p&gt;Feeling annoyed by her inexplicable unfriendly tone, which happens now and then in our short-lasting relationships, I wanted to explore her real thinking and said those words as a prank.&lt;/p&gt;
+&lt;p&gt;Feeling annoyed by her inexplicable unfriendly tone, which happens now and then in our not-long-lasting relationship, I wondered about her boundary and said those words more like a probe than a prank.&lt;/p&gt;
 
-&lt;p&gt;“Why must I want one team to win to watch a football game?” She argued.&lt;/p&gt;
+&lt;p&gt;“Why must I bet on a team when watching a football game?” She argued.&lt;/p&gt;
 
 &lt;p&gt;“For most people, they do.”&lt;/p&gt;
 
-&lt;p&gt;It was a contorted metaphor. I was also willing to go with her twisted context without clarification.&lt;/p&gt;
+&lt;p&gt;It was a contorted metaphor. I was also willing to go with that absurd context without any meaningful clarification.&lt;/p&gt;
 
-&lt;p&gt;“So I don’t deserve to see it?” She said sarcastically.&lt;/p&gt;
+&lt;p&gt;“So I don’t even deserve to see the election?” She said sarcastically.&lt;/p&gt;
 
 &lt;p&gt;“Ah, you sound angry.” I can imagine what her expression was behind the screen.&lt;/p&gt;
 
 &lt;p&gt;No more words came out.&lt;/p&gt;
 
-&lt;p&gt;Simply saying, “It doesn’t matter who wins, I just don’t care,” can defuse an uncomfortable argument. However, she is unable to speak that. The greatest tragedy between us is that she never care about the aggrssive attitude to others.&lt;/p&gt;
+&lt;p&gt;Simply saying, “It doesn’t matter who wins, I don’t care”, can defuse an uncomfortable argument. However, she cannot speak even a single word. The greatest tragedy between us is that she never perceives her aggressive attitude towards others.&lt;/p&gt;
 
-&lt;p&gt;You can’t hear me.&lt;/p&gt;</content><author><name>Jerry Chung</name><email>lik_chung@163.com</email></author><category term="blog" /><category term="diary" /><summary type="html">She told me she was focusing on the real-time result of the 2020 U.S. presidential election.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://iforester.me/assets/img/blog/the%20last%20conversation.jpg" /><media:content medium="image" url="https://iforester.me/assets/img/blog/the%20last%20conversation.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">我在旺角幼稚园</title><link href="https://iforester.me/blog/diary/2020-10-29-days-in-quarantine/" rel="alternate" type="text/html" title="我在旺角幼稚园" /><published>2020-10-29T00:00:00+08:00</published><updated>2020-10-29T00:00:00+08:00</updated><id>https://iforester.me/blog/diary/days%20in%20quarantine</id><content type="html" xml:base="https://iforester.me/blog/diary/2020-10-29-days-in-quarantine/">&lt;p&gt;2020 年 10 月 29 日，从家乡乘 D3333 次动车前往深圳北站，转的士过深圳湾口岸入港，我将开始新的求学和科研生涯。&lt;/p&gt;
+&lt;p&gt;You cannot hear.&lt;/p&gt;</content><author><name>Jerry Chung</name><email>lik_chung@163.com</email></author><category term="blog" /><category term="diary" /><summary type="html">She told me she was following the real-time result of the 2020 U.S. presidential election.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://iforester.me/assets/img/blog/the%20last%20conversation.jpg" /><media:content medium="image" url="https://iforester.me/assets/img/blog/the%20last%20conversation.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">我在旺角幼稚园</title><link href="https://iforester.me/blog/diary/2020-10-29-days-in-quarantine/" rel="alternate" type="text/html" title="我在旺角幼稚园" /><published>2020-10-29T00:00:00+08:00</published><updated>2020-10-29T00:00:00+08:00</updated><id>https://iforester.me/blog/diary/days%20in%20quarantine</id><content type="html" xml:base="https://iforester.me/blog/diary/2020-10-29-days-in-quarantine/">&lt;p&gt;2020 年 10 月 29 日，从家乡乘 D3333 次动车前往深圳北站，转的士过深圳湾口岸入港，我将开始新的求学和科研生涯。&lt;/p&gt;
 
 &lt;p&gt;由于今年声势浩大的 COVID-19 疫情，外地人入港后需执行 14 天自我隔离。&lt;/p&gt;
 
