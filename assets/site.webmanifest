@@ -7,7 +7,7 @@
   "theme_color": "rgb(44,54,68)",
   "background_color": "#fff",
   "orientation": "portrait",
-  "display": "standalone",
+  "display": "minimal-ui",
   "scope": "/",
   "icons": [
     {
