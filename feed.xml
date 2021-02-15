@@ -1,5 +1,27 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en-us"><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="https://iforester.me/feed.xml" rel="self" type="application/atom+xml" /><link href="https://iforester.me/" rel="alternate" type="text/html" hreflang="en-us" /><updated>2021-02-10T20:29:13+08:00</updated><id>https://iforester.me/feed.xml</id><title type="html">IForester</title><subtitle>A personal blog site by Jerry Chung.
-</subtitle><author><name>Jerry Chung</name><email>lik_chung@163.com</email></author><entry><title type="html">Mac 重置 SMC、NVRAM、PRAM 方法</title><link href="https://iforester.me/blog/note/2021-02-04-Reset-MacOS/" rel="alternate" type="text/html" title="Mac 重置 SMC、NVRAM、PRAM 方法" /><published>2021-02-04T00:00:00+08:00</published><updated>2021-02-04T00:00:00+08:00</updated><id>https://iforester.me/blog/note/Reset%20MacOS</id><content type="html" xml:base="https://iforester.me/blog/note/2021-02-04-Reset-MacOS/">&lt;p&gt;使用苹果 Mac 或 MacBook 电脑的过程中，经常会遇到各种各样的问题和疑难杂症，比如系统卡顿、无法启动等。如果联系苹果客服技术支持，很多时候他们都会引导你首先尝试&lt;strong&gt;重置 SMC&lt;/strong&gt;、&lt;strong&gt;重置 NVRAM 和 PRAM&lt;/strong&gt; 等措施。&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en-us"><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="https://iforester.me/feed.xml" rel="self" type="application/atom+xml" /><link href="https://iforester.me/" rel="alternate" type="text/html" hreflang="en-us" /><updated>2021-02-15T23:31:34+08:00</updated><id>https://iforester.me/feed.xml</id><title type="html">IForester</title><subtitle>A personal blog site by Jerry Chung.
+</subtitle><author><name>Jerry Chung</name><email>lik_chung@163.com</email></author><entry><title type="html">住在春天</title><link href="https://iforester.me/blog/diary/2021-02-15-2021-spring-festival/" rel="alternate" type="text/html" title="住在春天" /><published>2021-02-15T00:00:00+08:00</published><updated>2021-02-15T23:24:11+08:00</updated><id>https://iforester.me/blog/diary/2021%20spring%20festival</id><content type="html" xml:base="https://iforester.me/blog/diary/2021-02-15-2021-spring-festival/">&lt;p&gt;香港的春节假日不比内地长，今天是正月初四，明天便是新一年工作日的开始。&lt;/p&gt;
+
+&lt;p&gt;原本春节的法定假期竟然只有三天，只因正好三天包含了周日公众休息日，才勉为其难多放了一个周一。&lt;/p&gt;
+
+&lt;p&gt;想到历来备受世代华人重视的传统春节，在香港与其他节假日分量无异，略感凄凉。&lt;/p&gt;
+
+&lt;p&gt;同时也很不解：在这样高强度和繁忙的环境下，人们都在拼命努力工作，香港的经济为什么还是江河日下？&lt;/p&gt;
+
+&lt;p&gt;虽然因为疫情被困在香港无法回家，放假四天几乎都在宿舍睡觉，倒也乐在其中。&lt;/p&gt;
+
+&lt;p&gt;我本是喜静之人，节庆热闹与否于我何加焉。有网络视讯加成，与家乡父母的联络亦颇为方便。加之平日工作压力大，难得有时间休息，我已十分庆幸。&lt;/p&gt;
+
+&lt;p&gt;只是，每到过年才会发觉时间交替的残酷。&lt;/p&gt;
+
+&lt;p&gt;去年对我个人来说是变动巨大的一年，从前途茫茫到赴港求学，从无聊平静的生活中跳脱出来，又进入一个忙碌高压的环境。我的病，也从年初的至暗时刻过渡到现在将要完全断药。尽管仍会反复、仍有磕绊，一切总体还是朝着正常生活的方向进发着。&lt;/p&gt;
+
+&lt;p&gt;还有我那曲折的感情……&lt;/p&gt;
+
+&lt;p&gt;变化其实无时无刻不在发生，只是太过于稀松平常，或者太过于麻木不仁，以至于忽视了每天身心的变化，直到累积到春节，这个约定俗成的节点，才恍然发现。&lt;/p&gt;
+
+&lt;p&gt;那么今年就让我为自己定个小目标吧，愿自己更细致感知每一天，从而认真过好每一天——不论它带给我的感受是好是坏。&lt;/p&gt;
+
+&lt;p&gt;新年快乐。&lt;/p&gt;</content><author><name>Jerry Chung</name><email>lik_chung@163.com</email></author><category term="blog" /><category term="diary" /><summary type="html">香港的春节假日不比内地长，今天是正月初四，明天便是新一年工作日的开始。</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://iforester.me/assets/img/blog/2021%20spring%20festival.jpg" /><media:content medium="image" url="https://iforester.me/assets/img/blog/2021%20spring%20festival.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Mac 重置 SMC、NVRAM、PRAM 方法</title><link href="https://iforester.me/blog/note/2021-02-04-Reset-MacOS/" rel="alternate" type="text/html" title="Mac 重置 SMC、NVRAM、PRAM 方法" /><published>2021-02-04T00:00:00+08:00</published><updated>2021-02-04T00:00:00+08:00</updated><id>https://iforester.me/blog/note/Reset%20MacOS</id><content type="html" xml:base="https://iforester.me/blog/note/2021-02-04-Reset-MacOS/">&lt;p&gt;使用苹果 Mac 或 MacBook 电脑的过程中，经常会遇到各种各样的问题和疑难杂症，比如系统卡顿、无法启动等。如果联系苹果客服技术支持，很多时候他们都会引导你首先尝试&lt;strong&gt;重置 SMC&lt;/strong&gt;、&lt;strong&gt;重置 NVRAM 和 PRAM&lt;/strong&gt; 等措施。&lt;/p&gt;
 
 &lt;p&gt;很多疑难杂症在经过&lt;strong&gt;重置 SMC、NVRAM、PRAM&lt;/strong&gt; 之后都神奇地解决了。所以如果你的 Mac 也遇到了一些奇奇怪怪的问题，不妨自行尝试重置一下，有时真的会有奇效。注意：&lt;strong&gt;本文仅适合搭载 Intel 处理器的 Mac 电脑&lt;/strong&gt;，配备 M1 芯片的 Mac 并不适用。&lt;/p&gt;
 
